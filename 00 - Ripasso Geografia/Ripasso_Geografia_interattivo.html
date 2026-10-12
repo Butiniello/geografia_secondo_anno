@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ripasso di Geografia — Vero o Falso</title>
+<style>
+  :root {
+    --accent: #2f6a5e;
+    --accent-dark: #234f46;
+    --true-color: #2f7a4f;
+    --false-color: #a13b3b;
+    --ink: #2b2b2b;
+    --subink: #666;
+    --bg: #f4f6f5;
+    --card-bg: #ffffff;
+    --line: #d7dbd9;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 16px 48px;
+  }
+  header {
+    text-align: center;
+    margin-bottom: 18px;
+  }
+  h1 {
+    color: var(--accent-dark);
+    margin: 0 0 4px;
+    font-size: 1.6rem;
+  }
+  .subtitle {
+    color: var(--subink);
+    font-size: 0.95rem;
+    margin: 0;
+  }
+  .progress-wrap {
+    width: 100%;
+    max-width: 560px;
+    margin: 16px 0 8px;
+  }
+  .progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: var(--subink);
+    margin-bottom: 4px;
+  }
+  .progress-bar {
+    height: 8px;
+    background: var(--line);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--accent);
+    width: 0%;
+    transition: width 0.25s ease;
+  }
+  .card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+    width: 100%;
+    max-width: 560px;
+    min-height: 320px;
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+  }
+  .card-number {
+    position: absolute;
+    top: 18px;
+    left: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    font-size: 0.9rem;
+  }
+  .statement {
+    font-size: 1.3rem;
+    font-weight: 700;
+    line-height: 1.4;
+    text-align: center;
+    margin: 12px 0 28px;
+  }
+  .choice-row {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+  }
+  .choice-btn {
+    flex: 1;
+    max-width: 180px;
+    padding: 14px 0;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.1s ease, opacity 0.15s ease;
+  }
+  .choice-btn:active { transform: scale(0.97); }
+  .choice-btn.vero { background: var(--true-color); }
+  .choice-btn.falso { background: var(--false-color); }
+  .choice-btn:disabled { opacity: 0.55; cursor: default; }
+
+  .answer-box {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    display: none;
+  }
+  .answer-box.show { display: block; }
+  .verdict {
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 999px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+  }
+  .verdict.vero { background: var(--true-color); }
+  .verdict.falso { background: var(--false-color); }
+  .verdict-feedback {
+    font-weight: 700;
+    margin: 0 0 6px;
+  }
+  .explanation {
+    color: var(--subink);
+    font-size: 0.98rem;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .nav-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 560px;
+    margin-top: 22px;
+    gap: 10px;
+  }
+  .nav-btn {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 18px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  .nav-btn:hover { background: var(--accent-dark); }
+  .nav-btn.secondary {
+    background: transparent;
+    color: var(--accent-dark);
+    border: 1px solid var(--accent);
+  }
+  .score {
+    font-size: 0.9rem;
+    color: var(--subink);
+    text-align: center;
+  }
+  .controls-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  .end-screen {
+    text-align: center;
+  }
+  .end-screen h2 {
+    color: var(--accent-dark);
+  }
+  footer {
+    margin-top: 28px;
+    font-size: 0.8rem;
+    color: #999;
+    text-align: center;
+  }
+  @media (max-width: 480px) {
+    .statement { font-size: 1.1rem; }
+    .card { padding: 24px 18px; min-height: 280px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Ripasso di Geografia</h1>
+  <p class="subtitle">Vero o Falso? — 35 carte con spiegazione</p>
+</header>
+
+<div class="progress-wrap">
+  <div class="progress-label">
+    <span id="progressText">Carta 1 di 35</span>
+    <span id="scoreText">Corrette: 0</span>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+</div>
+
+<div class="card" id="card">
+  <div class="card-number" id="cardNumber">#1</div>
+  <p class="statement" id="statement"></p>
+
+  <div class="choice-row" id="choiceRow">
+    <button class="choice-btn vero" id="btnVero">VERO</button>
+    <button class="choice-btn falso" id="btnFalso">FALSO</button>
+  </div>
+
+  <div class="answer-box" id="answerBox">
+    <span class="verdict" id="verdictTag"></span>
+    <p class="verdict-feedback" id="verdictFeedback"></p>
+    <p class="explanation" id="explanationText"></p>
+  </div>
+</div>
+
+<div class="nav-row">
+  <button class="nav-btn secondary" id="btnPrev">&larr; Precedente</button>
+  <button class="nav-btn" id="btnNext">Successiva &rarr;</button>
+</div>
+
+<div class="controls-bottom">
+  <button class="nav-btn secondary" id="btnShuffle">Mescola le carte</button>
+  <button class="nav-btn secondary" id="btnRestart">Ricomincia</button>
+</div>
+
+<footer>Materiale di ripasso — nessuna connessione internet richiesta</footer>
+
+<script>
+const CARDS = [
+  ["La latitudine misura la distanza di un punto dall'Equatore, espressa in gradi.", true,
+   "Si misura da 0° all'Equatore fino a 90° ai poli (Nord o Sud)."],
+  ["La latitudine si misura in gradi che vanno da 0° a 360°.", false,
+   "La latitudine va da 0° (Equatore) a 90° (poli). È la longitudine ad avere valori diversi, comunque fino a 180°, non 360°."],
+  ["Tutti i punti che si trovano sullo stesso parallelo hanno la stessa latitudine.", true,
+   "I paralleli sono cerchi immaginari paralleli all'Equatore e uniscono punti con la stessa latitudine."],
+  ["La longitudine misura la distanza di un punto dal meridiano di Greenwich.", true,
+   "Il meridiano di Greenwich (0°) è il punto di riferimento da cui si calcola la longitudine, verso est o verso ovest."],
+  ["La longitudine può arrivare fino a 180° verso est o verso ovest rispetto a Greenwich.", true,
+   "Superati i 180° si ritorna al meridiano opposto, vicino alla linea del cambiamento di data."],
+  ["I meridiani sono linee immaginarie parallele tra loro, come i paralleli.", false,
+   "I meridiani sono semicerchi che collegano i due poli e convergono in essi: non sono paralleli tra loro come invece lo sono i paralleli."],
+  ["Il reticolato geografico è l'insieme di paralleli e meridiani che permette di individuare un punto sulla superficie terrestre.", true,
+   "Incrociando un parallelo (latitudine) e un meridiano (longitudine) si individuano le coordinate geografiche di qualsiasi luogo."],
+  ["L'Equatore è il meridiano principale del reticolato geografico.", false,
+   "L'Equatore è un parallelo (il parallelo 0°), mentre il meridiano principale (0°) è quello di Greenwich."],
+  ["Le forze endogene hanno origine dall'interno della Terra.", true,
+   "Sono legate all'energia interna del pianeta e comprendono ad esempio vulcanismo e terremoti."],
+  ["Il vento e la pioggia sono esempi di forze endogene.", false,
+   "Vento e pioggia sono agenti esterni (esogeni): le forze endogene comprendono invece fenomeni come terremoti, vulcani e movimenti delle placche."],
+  ["I terremoti sono causati dal movimento delle placche tettoniche, un fenomeno endogeno.", true,
+   "Il rilascio improvviso di energia lungo le faglie, dovuto al movimento delle placche, genera le scosse sismiche."],
+  ["Le forze esogene modellano il paesaggio agendo dall'esterno della Terra, come vento, pioggia e ghiacciai.", true,
+   "Sono agenti atmosferici e climatici che erodono, trasportano e depositano materiali, modificando lentamente il paesaggio."],
+  ["L'erosione è un esempio di forza endogena.", false,
+   "L'erosione è un processo esogeno, causato da agenti esterni come acqua, vento e ghiaccio che consumano le rocce nel tempo."],
+  ["I fiumi, scorrendo, possono erodere il terreno e trasportare sedimenti a valle.", true,
+   "È un tipico esempio di azione esogena, che nel tempo modella valli e pianure."],
+  ["Il clima descrive le condizioni atmosferiche medie di una zona osservate per un lungo periodo di tempo.", true,
+   "A differenza del tempo meteorologico, che cambia di giorno in giorno, il clima è una media calcolata su decenni."],
+  ["Il clima equatoriale è caratterizzato da temperature basse e piogge scarse tutto l'anno.", false,
+   "Il clima equatoriale ha temperature elevate e piogge abbondanti durante tutto l'anno."],
+  ["L'effetto serra è un fenomeno naturale che permette alla Terra di mantenere temperature adatte alla vita.", true,
+   "Alcuni gas nell'atmosfera trattengono parte del calore del Sole; senza questo fenomeno la Terra sarebbe troppo fredda per la vita."],
+  ["L'aumento eccessivo di gas serra nell'atmosfera, dovuto anche alle attività umane, non ha alcun effetto sul clima globale.", false,
+   "L'eccesso di gas serra, come anidride carbonica e metano, intensifica l'effetto serra naturale, contribuendo al riscaldamento globale."],
+  ["Le montagne sono rilievi che superano generalmente i 600 metri di altitudine.", true,
+   "Sotto questa soglia si parla generalmente di colline; sopra, di montagne (la soglia può variare a seconda delle classificazioni)."],
+  ["Le montagne più alte del mondo si trovano tutte in Europa.", false,
+   "Le vette più alte del mondo si trovano in Asia, nella catena dell'Himalaya, dove si trova anche l'Everest."],
+  ["I rilievi possono formarsi anche a causa dello scontro tra placche tettoniche.", true,
+   "Lo scontro tra placche può sollevare la crosta terrestre, dando origine a catene montuose come le Alpi o l'Himalaya."],
+  ["Le colline sono rilievi generalmente più bassi delle montagne, con altitudine inferiore a circa 600 metri.", true,
+   "Hanno forme più dolci e arrotondate rispetto alle montagne."],
+  ["In Italia le colline occupano una porzione di territorio molto piccola, quasi trascurabile.", false,
+   "Le colline occupano circa un terzo del territorio italiano, una delle percentuali più alte tra i paesi europei."],
+  ["Le pianure sono territori pianeggianti con altitudine solitamente inferiore ai 200 metri.", true,
+   "Sono aree con dislivelli minimi, spesso adatte all'agricoltura e agli insediamenti umani."],
+  ["La Pianura Padana è la pianura più estesa d'Italia.", true,
+   "Si estende nell'Italia settentrionale ed è la pianura più ampia del paese."],
+  ["La sorgente è il punto in cui un fiume nasce, mentre la foce è il punto in cui sfocia in un altro corso d'acqua, in un lago o in un mare.", true,
+   "Sono i due estremi del percorso di un fiume."],
+  ["Tutti i fiumi del mondo sfociano necessariamente nel mare.", false,
+   "Alcuni fiumi sfociano in laghi o altri corsi d'acqua, oppure si disperdono nel terreno senza raggiungere il mare."],
+  ["Un affluente è un fiume che confluisce in uno principale, aumentandone la portata d'acqua.", true,
+   "È un corso d'acqua secondario che si unisce a un fiume più grande."],
+  ["Tutti i laghi sono di origine vulcanica.", false,
+   "I laghi possono avere origini diverse: glaciale, vulcanica, tettonica o artificiale, a seconda di come si è formato il bacino."],
+  ["Il Lago di Garda è il lago più esteso d'Italia.", true,
+   "Con la sua superficie, il Lago di Garda è il lago naturale più grande d'Italia."],
+  ["Il Mar Mediterraneo è collegato all'Oceano Atlantico attraverso lo Stretto di Gibilterra.", true,
+   "Questo stretto passaggio d'acqua mette in comunicazione le due masse d'acqua."],
+  ["L'acqua dei mari è dolce, cioè priva di sale.", false,
+   "L'acqua marina è salata, a differenza di quella dei fiumi e della maggior parte dei laghi, che è generalmente dolce."],
+  ["La demografia è la disciplina che studia la popolazione e i suoi cambiamenti nel tempo (nascite, morti, migrazioni).", true,
+   "Analizza dati come natalità, mortalità e movimenti migratori per capire come cambia una popolazione."],
+  ["La densità di popolazione indica quanti abitanti vivono mediamente in un chilometro quadrato di territorio.", true,
+   "Si calcola dividendo il numero di abitanti per la superficie del territorio considerato."],
+  ["Tutte le regioni del mondo hanno la stessa densità di popolazione.", false,
+   "La densità di popolazione varia moltissimo da zona a zona: alcune aree, come le grandi città, sono densamente popolate, altre quasi disabitate."]
+];
+
+let order = CARDS.map((_, i) => i);
+let current = 0;
+let answered = false;
+let correctCount = 0;
+let answeredCount = 0;
+
+const elStatement = document.getElementById('statement');
+const elCardNumber = document.getElementById('cardNumber');
+const elChoiceRow = document.getElementById('choiceRow');
+const elAnswerBox = document.getElementById('answerBox');
+const elVerdictTag = document.getElementById('verdictTag');
+const elVerdictFeedback = document.getElementById('verdictFeedback');
+const elExplanation = document.getElementById('explanationText');
+const elProgressText = document.getElementById('progressText');
+const elScoreText = document.getElementById('scoreText');
+const elProgressFill = document.getElementById('progressFill');
+const btnVero = document.getElementById('btnVero');
+const btnFalso = document.getElementById('btnFalso');
+const btnPrev = document.getElementById('btnPrev');
+const btnNext = document.getElementById('btnNext');
+const btnShuffle = document.getElementById('btnShuffle');
+const btnRestart = document.getElementById('btnRestart');
+
+function render() {
+  const idx = order[current];
+  const [statement, isTrue, explanation] = CARDS[idx];
+  elCardNumber.textContent = '#' + (current + 1);
+  elStatement.textContent = statement;
+  elProgressText.textContent = 'Carta ' + (current + 1) + ' di ' + CARDS.length;
+  elScoreText.textContent = 'Corrette: ' + correctCount + ' / ' + answeredCount;
+  elProgressFill.style.width = ((current) / (CARDS.length - 1 || 1) * 100) + '%';
+
+  elAnswerBox.classList.remove('show');
+  elChoiceRow.style.display = 'flex';
+  btnVero.disabled = false;
+  btnFalso.disabled = false;
+  answered = false;
+}
+
+function showAnswer(userChoiceTrue) {
+  if (answered) return;
+  answered = true;
+  answeredCount++;
+  const idx = order[current];
+  const [, isTrue, explanation] = CARDS[idx];
+  const correct = (userChoiceTrue === isTrue);
+  if (correct) correctCount++;
+
+  btnVero.disabled = true;
+  btnFalso.disabled = true;
+
+  elVerdictTag.textContent = isTrue ? 'VERO' : 'FALSO';
+  elVerdictTag.className = 'verdict ' + (isTrue ? 'vero' : 'falso');
+  elVerdictFeedback.textContent = correct ? 'Esatto!' : 'Non proprio.';
+  elExplanation.textContent = explanation;
+  elAnswerBox.classList.add('show');
+  elScoreText.textContent = 'Corrette: ' + correctCount + ' / ' + answeredCount;
+}
+
+btnVero.addEventListener('click', () => showAnswer(true));
+btnFalso.addEventListener('click', () => showAnswer(false));
+
+btnNext.addEventListener('click', () => {
+  if (current < order.length - 1) {
+    current++;
+    render();
+  } else {
+    elStatement.textContent = 'Hai completato tutte le carte!';
+    elCardNumber.textContent = '';
+    elChoiceRow.style.display = 'none';
+    elAnswerBox.classList.remove('show');
+    elProgressFill.style.width = '100%';
+  }
+});
+
+btnPrev.addEventListener('click', () => {
+  if (current > 0) {
+    current--;
+    render();
+  }
+});
+
+btnShuffle.addEventListener('click', () => {
+  for (let i = order.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [order[i], order[j]] = [order[j], order[i]];
+  }
+  current = 0;
+  correctCount = 0;
+  answeredCount = 0;
+  render();
+});
+
+btnRestart.addEventListener('click', () => {
+  order = CARDS.map((_, i) => i);
+  current = 0;
+  correctCount = 0;
+  answeredCount = 0;
+  render();
+});
+
+render();
+</script>
+
+</body>
+</html>
