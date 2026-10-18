@@ -7,6 +7,11 @@
 - [Atlante UE](https://butiniello.github.io/geografia_secondo_anno/02%20-%20L%27Europa%20e%20l%27Unione%20europea/Atlante%20UE.html)
 - [Il viaggio del caricatore. Come funzionano le istituzioni europee](https://butiniello.github.io/geografia_secondo_anno/02%20-%20L%27Europa%20e%20l%27Unione%20europea/Il%20viaggio%20del%20caricatore.%20Come%20funzionano%20le%20istituzioni%20europee.html)
 
+## Documenti
+
+- [Carta dei diritti fondamentali Europa (PDF)](Carta%20dei%20diritti%20fondamentali%20Europa.pdf)
+- [Costituzione italiana (PDF)](Costituzione%20italiana.pdf)
+
 ## Immagini
 
 ### Europa negli anni
