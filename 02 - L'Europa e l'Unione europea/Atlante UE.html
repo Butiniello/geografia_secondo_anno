@@ -250,7 +250,7 @@ button{font:inherit; color:inherit}
   .card{top:var(--peek); animation:none}
 }
 @media (prefers-reduced-motion: reduce){ *{animation:none!important; transition:none!important} }
-</style>
+/*MOBILE-FIX*/@media (pointer:coarse){button,[role=button],[role=tab],select,summary{min-height:40px}button{min-width:36px;touch-action:manipulation}}</style>
 
 <div class="app" id="app">
   <header class="top">
