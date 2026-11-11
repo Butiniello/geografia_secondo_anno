@@ -343,6 +343,68 @@
     #maps .chip{ padding:4px 10px; }
     #legend:not([hidden]){ right:auto; width:300px; }
   }
+
+  /* ---- v10: storia (Reconquista), profilo altimetrico, sfida ---- */
+  #dock{ position:absolute; left:50%; transform:translateX(-50%); bottom:96px; z-index:5; display:flex; flex-direction:column; gap:8px; width:min(740px, calc(100% - 32px)); pointer-events:none; }
+  #dock > section{ pointer-events:auto; position:relative; padding:10px 14px 11px; }
+  .dclose{ position:absolute; right:8px; top:8px; width:28px; height:28px; padding:0; border-radius:50%; border:1px solid var(--line); background:transparent; color:var(--ink); font-size:17px; line-height:1; cursor:pointer; }
+  .dclose:hover{ border-color:var(--ink); }
+  .dclose:focus-visible, #tRange:focus-visible{ outline:3px solid var(--accent); outline-offset:2px; }
+  .dtitle{ font-family:var(--cond); font-weight:700; font-size:13px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin:0 34px 6px 0; }
+  /* storia */
+  #timebar .trow{ display:flex; align-items:center; gap:10px; margin-right:30px; }
+  #tYear{ font-family:var(--cond); font-weight:700; font-size:34px; line-height:1; min-width:74px; text-align:center; font-variant-numeric:tabular-nums; color:var(--ink); }
+  #tRange{ flex:1; min-width:80px; accent-color:var(--accent); height:28px; cursor:pointer; }
+  #tState{ margin:7px 0 0; font-size:12.5px; line-height:1.35; color:var(--muted); }
+  #tState b{ color:var(--ink); font-weight:600; }
+  #tCap{ margin:5px 0 0; font-size:14px; line-height:1.4; color:var(--ink); min-height:2.8em; }
+  #tCap b{ font-family:var(--cond); font-size:16px; letter-spacing:.02em; }
+  .hst{ font-family:var(--cond); font-weight:700; font-size:14.5px; letter-spacing:.1em; text-transform:uppercase; color:#1c1a17; text-shadow:0 0 3px #fff, 0 0 3px #fff, 0 0 6px #fff; }
+  .hst.big{ font-size:17px; letter-spacing:.14em; }
+  .evt{ font-family:var(--cond); font-weight:700; font-size:14px; color:#7a1414; }
+  .evt::before{ content:''; position:absolute; left:-6px; top:-6px; width:10px; height:10px; background:#c62828; border:2px solid #fff; transform:rotate(45deg); box-sizing:content-box; box-shadow:0 1px 3px rgba(0,0,0,.4); }
+  .evt .tx{ background:rgba(255,255,255,.88); padding:1px 5px; border-radius:3px; }
+  /* stagioni */
+  #seasonbar .trow{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+  #sMonth{ font-family:var(--cond); font-weight:700; font-size:30px; line-height:1; min-width:128px; color:var(--ink); }
+  #sSeason{ font-family:var(--cond); font-weight:600; font-size:14px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); min-width:84px; }
+  #sRange{ flex:1; min-width:140px; accent-color:var(--accent); height:28px; cursor:pointer; }
+  #sRange:focus-visible{ outline:3px solid var(--accent); outline-offset:2px; }
+  #sCap{ margin:6px 0 0; font-size:14px; line-height:1.4; color:var(--ink); min-height:2.8em; }
+  .pin.met i{ left:-7px; top:-7px; width:10px; height:10px; }
+  .pin.met b{ white-space:pre; line-height:1.15; left:10px; top:-10px; background:rgba(255,255,255,.92); color:#1c1a17; font-size:13.5px; padding:1px 6px; box-shadow:0 1px 3px rgba(0,0,0,.3); font-variant-numeric:tabular-nums; }
+  #app.picking #scene{ cursor:crosshair; }
+  /* sfida */
+  #quizbar{ text-align:center; }
+  #quizbar .qrow{ display:flex; flex-wrap:wrap; gap:6px; justify-content:center; align-items:center; margin:6px 0 0; }
+  #quizbar .qrow .lbl2{ font-size:12.5px; color:var(--muted); margin-right:2px; }
+  #qTop{ display:flex; justify-content:space-between; align-items:baseline; gap:10px; margin-right:30px; font-family:var(--cond); font-weight:600; font-size:15px; color:var(--muted); }
+  #qTurn b{ padding:1px 8px; border-radius:999px; color:#fff; }
+  #qText{ margin:4px 0 2px; font-family:var(--cond); font-weight:700; font-size:28px; line-height:1.1; color:var(--ink); }
+  #qText small{ display:block; font-family:var(--sans); font-weight:500; font-size:13px; color:var(--muted); letter-spacing:0; margin-bottom:2px; }
+  #qFb{ margin:4px 0 0; min-height:1.5em; font-size:15px; font-weight:600; }
+  #qFb.ok{ color:#1a8a44; } #qFb.no{ color:#c62828; }
+  #qEnd h2{ margin:2px 0 4px; font-family:var(--cond); font-size:30px; }
+  #qEnd p{ margin:2px 0; font-size:14px; }
+  #quizBtn{ background:var(--accent); color:#fff; }
+  #quizBtn[aria-pressed="true"]{ box-shadow:0 0 0 3px rgba(0,0,0,.18) inset; }
+  .pin{ position:absolute; left:0; top:0; pointer-events:none; will-change:transform; }
+  .pin i{ position:absolute; left:-8px; top:-8px; width:12px; height:12px; border-radius:50%; background:#d1242f; border:2px solid #fff; box-shadow:0 1px 4px rgba(0,0,0,.45); }
+  .pin b{ position:absolute; left:12px; top:-11px; background:#16181a; color:#fff; font-family:var(--cond); font-weight:600; font-size:14px; padding:2px 7px; border-radius:4px; white-space:nowrap; }
+  .pin.ok i{ background:#1a9c4b; } .pin.ok b{ background:#14753a; }
+  .pin.no i{ background:#d1242f; } .pin.no b{ background:#a51d27; }
+  .pin.ok i::after, .pin.no i::after{ content:''; position:absolute; left:-11px; top:-11px; width:30px; height:30px; border-radius:50%; border:2px solid currentColor; color:inherit; animation:hotPulse 1.6s ease-out infinite; }
+  .pin.ok{ color:#1a9c4b; } .pin.no{ color:#d1242f; }
+  .pin.dot i{ left:-6px; top:-6px; width:6px; height:6px; background:#fff; border:3px solid #d1242f; }
+  .pin.miss i{ left:-5px; top:-5px; width:8px; height:8px; background:#555; border:1.5px solid #fff; }
+  @media (max-width: 860px){
+    #dock{ width:calc(100% - 16px); }
+    #dock > section{ padding:8px 10px 9px; }
+    #timebar .trow{ flex-wrap:wrap; gap:6px 8px; margin-right:0; } #tRange{ flex-basis:100%; } #tYear{ font-size:26px; min-width:56px; } #tPrev, #tNext{ white-space:nowrap; } #tCap{ font-size:13px; } #qText{ font-size:22px; } #sMonth{ font-size:24px; min-width:104px; } #sRange{ flex-basis:100%; } #sCap{ font-size:13px; } .pin.met b{ font-size:12px; }
+  }
+
+  @media (min-width: 861px) and (max-width: 1260px){ #dock{ left:auto; right:16px; transform:none; width:min(740px, calc(100% - 268px)); } }
+  #legStoria li{ grid-template-columns:22px 1fr; }
 </style>
 
 <style>[hidden]{display:none!important}/*MOBILE-FIX*/@media (pointer:coarse){button,[role=button],[role=tab],select,summary{min-height:40px}button{min-width:36px;touch-action:manipulation}}</style>
@@ -352,6 +414,57 @@
   <canvas id="scene" aria-label="Modello 3D del rilievo della Spagna"></canvas>
   <div id="labels" aria-hidden="true"></div>
   <div id="tip" hidden></div>
+  <div id="pins" aria-hidden="true"></div>
+  <div id="dock">
+    <section id="timebar" class="panel" aria-label="Linea del tempo della Reconquista" hidden>
+      <p class="dtitle">La Reconquista, anno per anno</p>
+      <div class="trow">
+        <button class="chip on" id="tPlay">Avvia</button>
+        <button class="chip" id="tPrev" aria-label="Evento precedente">&lsaquo; evento</button>
+        <output id="tYear" for="tRange">711</output>
+        <button class="chip" id="tNext" aria-label="Evento successivo">evento &rsaquo;</button>
+        <input id="tRange" type="range" min="711" max="1492" step="1" value="711" aria-label="Anno">
+      </div>
+      <p id="tState"></p>
+      <p id="tCap"></p>
+    </section>
+    <section id="seasonbar" class="panel" aria-label="Stagioni e clima, mese per mese" hidden>
+      <p class="dtitle">Stagioni e clima, mese per mese</p>
+      <div class="trow">
+        <button class="chip on" id="sPlay">Avvia</button>
+        <output id="sMonth" for="sRange">Gennaio</output>
+        <span id="sSeason">inverno</span>
+        <input id="sRange" type="range" min="0" max="11" step="1" value="0" aria-label="Mese">
+      </div>
+      <p id="sCap"></p>
+    </section>
+    <section id="quizbar" class="panel" aria-label="Sfida: trova sulla carta" hidden>
+      <button class="dclose" id="qClose" aria-label="Esci dalla sfida">&times;</button>
+      <div id="qSetup">
+        <p class="dtitle" style="margin-right:0">Sfida: trova sulla carta</p>
+        <div class="qrow"><span class="lbl2">Giocatori</span>
+          <button class="chip" data-qteam="1" aria-pressed="true">Da soli</button>
+          <button class="chip" data-qteam="2" aria-pressed="false">Due squadre</button></div>
+        <div class="qrow"><span class="lbl2">Scegli la sfida</span>
+          <button class="chip on" data-qcat="com">Comunità autonome</button>
+          <button class="chip on" data-qcat="cit">Città</button>
+          <button class="chip on" data-qcat="fis">Monti, fiumi e mari</button></div>
+        <p class="qhint" style="margin:8px 0 0;font-size:12.5px;color:var(--muted)">10 domande sulla carta muta: 10 punti al primo colpo, 5 al secondo.</p>
+      </div>
+      <div id="qPlay" hidden>
+        <div id="qTop"><span id="qNum"></span><span id="qTurn"></span><span id="qScore"></span></div>
+        <h2 id="qText"></h2>
+        <p id="qFb" aria-live="polite"></p>
+        <div class="qrow"><button class="chip" id="qSkip">Non lo so, mostramelo</button></div>
+      </div>
+      <div id="qEnd" hidden>
+        <h2 id="qEndTitle"></h2>
+        <p id="qEndText"></p>
+        <p id="qEndMiss"></p>
+        <div class="qrow"><button class="chip on" id="qAgain">Gioca ancora</button><button class="chip" id="qQuit">Esci</button></div>
+      </div>
+    </section>
+  </div>
   <div id="loading" role="status">Sto costruendo il rilievo…</div>
   <div id="infoBack" hidden></div>
   <section id="info" class="panel" role="dialog" aria-modal="true" aria-labelledby="infoTitle" hidden>
@@ -371,6 +484,8 @@
     <button class="chip" data-map="fisica" aria-pressed="true">Fisica</button>
     <button class="chip" data-map="politica" aria-pressed="false">Politica</button>
     <button class="chip" data-map="lingue" aria-pressed="false">Lingue</button>
+    <button class="chip" data-map="storia" aria-pressed="false">Storia</button>
+    <button class="chip" id="quizBtn" aria-pressed="false">Sfida</button>
   </nav>
 
   <header id="head" class="panel">
@@ -462,6 +577,34 @@
       <p class="note">Clicca una lingua (sulla carta o qui) per leggere la sua scheda. Le lingue ufficiali sono il castigliano in tutta la Spagna e, nelle loro comunità, catalano (e valenciano), galiziano, basco e aranese.</p>
       <p class="src2">Zone ricavate dalla carta «Languages and Dialects of Spain» di Henry Nomeland; confini semplificati.</p>
     </div>
+    <div data-part id="legStoria" hidden>
+      <h3>La Reconquista</h3>
+      <ul>
+        <li><span class="sw" style="background:#3f9e6c"></span>al-Andalus (territori musulmani)</li>
+        <li><span class="sw" style="background:#e2b23f"></span>Asturie, poi León</li>
+        <li><span class="sw" style="background:#d9605a"></span>Castiglia</li>
+        <li><span class="sw" style="background:#9a78c9"></span>Pamplona, poi Navarra</li>
+        <li><span class="sw" style="background:#f0913c"></span>Aragona</li>
+        <li><span class="sw" style="background:#f3c59c"></span>Contee catalane</li>
+        <li><span class="sw" style="background:#4f93d6"></span>Portogallo</li>
+        <li><span class="sw" style="background:#c9b48a"></span>Regno visigoto (711)</li>
+      </ul>
+      <p class="note">Sposta il cursore degli anni o premi «Avvia»: la frontiera scende da nord a sud in quasi otto secoli.</p>
+      <p class="src2">Ricostruzione didattica: i confini sono semplificati e seguono in parte le province di oggi; le frontiere vere erano fasce incerte, non linee.</p>
+    </div>
+    <div data-part id="legStag" hidden>
+      <h3>Stagioni e clima</h3>
+      <ul>
+        <li><span class="sw" style="background:#7fa85e"></span>terreno verde: mesi piovosi</li>
+        <li><span class="sw" style="background:#d3c184"></span>terreno giallo: mesi secchi</li>
+        <li><span class="sw" style="background:#fafbff"></span>neve sui monti</li>
+        <li><span class="sw" style="background:linear-gradient(#fff,#b9c5d8);border-radius:8px"></span>nuvole e pioggia: più nuvole, più piove</li>
+        <li><span class="sw" style="background:linear-gradient(#d5dae2,#59616f);border-radius:8px"></span>nuvole scure: piogge abbondanti</li>
+        <li><span class="sw" style="background:#ffd21f;height:4px"></span>fulmini: stagione dei temporali</li>
+      </ul>
+      <p class="note">Accanto alle città: temperatura media e pioggia del mese. Sposta il cursore dei mesi o premi «Avvia».</p>
+      <p class="src2">Città: valori medi 1981-2010 (AEMET). Colori del terreno, neve e pioggia sono uno schema didattico basato sulle fasce climatiche, non una misura.</p>
+    </div>
     <div data-part id="legCam" hidden>
       <h3>Cammini di Santiago</h3>
       <ul id="camList"></ul>
@@ -492,6 +635,7 @@
       <button class="chip" data-mode="fiumi" aria-pressed="false">Solo fiumi</button>
       <button class="chip" data-mode="laghi" aria-pressed="false">Solo laghi</button>
       <button class="chip" data-mode="clima" aria-pressed="false">Clima</button>
+      <button class="chip" data-mode="stagioni" aria-pressed="false">Stagioni</button>
       <button class="chip" data-mode="coste" aria-pressed="false">Coste</button>
       <button class="chip" data-mode="cammini" aria-pressed="false">Cammini di Santiago</button>
     </div>
@@ -1209,8 +1353,8 @@
   var resizeDirty = true, layoutDirty = true;
   function markLayout(){ resizeDirty = true; layoutDirty = true; }
   window.addEventListener('resize', markLayout);
-  if (window.ResizeObserver){ var RO = new ResizeObserver(markLayout); setTimeout(function(){ ['scene', 'bar', 'maps', 'head', 'card', 'legend', 're-head', 're-card', 're-legend'].forEach(function(id){ var e = document.getElementById(id); if (e) RO.observe(e); }); }, 0); }
-  if (window.MutationObserver) setTimeout(function(){ var MO = new MutationObserver(markLayout); ['bar', 'maps', 'head', 'card', 'legend', 're-head', 're-card', 're-legend', 'grpMostra', 'grpPol', 'provBtn'].forEach(function(id){ var e = document.getElementById(id); if (e) MO.observe(e, { attributes:true, attributeFilter:['hidden', 'data-open'] }); }); }, 0);
+  if (window.ResizeObserver){ var RO = new ResizeObserver(markLayout); setTimeout(function(){ ['scene', 'bar', 'maps', 'head', 'card', 'legend', 're-head', 're-card', 're-legend', 'timebar', 'seasonbar', 'quizbar'].forEach(function(id){ var e = document.getElementById(id); if (e) RO.observe(e); }); }, 0); }
+  if (window.MutationObserver) setTimeout(function(){ var MO = new MutationObserver(markLayout); ['bar', 'maps', 'head', 'card', 'legend', 're-head', 're-card', 're-legend', 'grpMostra', 'grpPol', 'provBtn', 'timebar', 'seasonbar', 'quizbar', 'qPlay', 'qEnd'].forEach(function(id){ var e = document.getElementById(id); if (e) MO.observe(e, { attributes:true, attributeFilter:['hidden', 'data-open'] }); }); }, 0);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(markLayout);
   function resize(){
     if (!resizeDirty) return; resizeDirty = false;
@@ -1691,7 +1835,7 @@
     });
     return out;
   }
-  var panels = ['maps', 'head', 'card', 'legend', 'bar'].map(function(id){ return document.getElementById(id); });
+  var panels = ['maps', 'head', 'card', 'legend', 'bar', 'timebar', 'seasonbar', 'quizbar'].map(function(id){ return document.getElementById(id); });
   // is the straight line from the camera to the label cut by the relief?
   function occluded(p){
     var c = camera.position, steps = 26;
@@ -1721,7 +1865,7 @@
     frameN++;
     var W = canvas.clientWidth, H = canvas.clientHeight, e = camera.matrixWorld.elements;
     // nothing moved and nothing changed: the names stay where they are
-    var sig = [e[12].toFixed(2), e[13].toFixed(2), e[14].toFixed(2), e[0].toFixed(4), e[2].toFixed(4), e[9].toFixed(4), W, H, state.mode, state.names, state.prov, state.exag].join('|');
+    var sig = [e[12].toFixed(2), e[13].toFixed(2), e[14].toFixed(2), e[0].toFixed(4), e[2].toFixed(4), e[9].toFixed(4), W, H, state.mode, state.names, state.prov, state.exag, HIST.year, QZ.on].join('|');
     if (sig !== labSig){ labSig = sig; labSettle = 8; }
     if (labelsDirty){ labelsDirty = false; labSettle = Math.max(labSettle, 8); }
     if (labSettle <= 0 && !panelRects) labSettle = 1;
@@ -1739,6 +1883,8 @@
       // nella carta politica le isole si chiamano già con il nome della comunità: restano solo quelle minori
       if (state.mode === 'politica' && l.type === 'is' && (l.name === 'Isole Baleari' || l.name === 'Isole Canarie')) on = false;
       if (state.mode === 'cammini' && l.type === 'cit' && l.name !== 'Santiago de Compostela') on = false;
+      if (l.yr && (HIST.year < l.yr[0] || HIST.year > l.yr[1])) on = false;
+      if (QZ.on) on = false;
       l.bare = !state.names;
       var d = camera.position.distanceTo(l.world);
       // in "solo fiumi" / "solo laghi" every river or lake keeps its name, whatever the distance
@@ -1752,7 +1898,7 @@
         l.sx = (tmpV.x*0.5 + 0.5)*W; l.sy = (-tmpV.y*0.5 + 0.5)*H;
       }
       if ((l.type === 'prv' || l.type === 'cpp') && !state.prov) on = false;
-      var noOcc = l.type === 'sea' || l.type === 'rg';        // i nomi dei mari e delle catene non vengono nascosti dal rilievo
+      var noOcc = l.type === 'sea' || l.type === 'rg' || l.type === 'hst';        // i nomi dei mari e delle catene non vengono nascosti dal rilievo
       if (on && ((frameN + l.i) % 6 === 0 || l.occ === undefined || labSettle === 0) && !noOcc) l.occ = occluded(l.world);
       if (on && l.occ && !noOcc) on = false;
       l.on = on; if (on) list.push(l);
@@ -1911,6 +2057,7 @@
     drag = null;
     if (!downAt || Math.hypot(e.clientX - downAt.x, e.clientY - downAt.y) > 6 || performance.now() - downAt.t > 500) return;
     var r = canvas.getBoundingClientRect(), mx = e.clientX - r.left, my = e.clientY - r.top;
+    if (QZ.on){ var qg = pickGround(mx, my); if (qg) quizClick(qg); return; }
     var hit = null;
     L.forEach(function(l){
       if (!hit && l.info && l.on && Math.hypot(mx - l.sx, my - l.sy) < 46) hit = l;
@@ -2192,6 +2339,592 @@
     }
   }
 
+  // ================================================================ v10: storia, stagioni, sfida
+  function gid(id){ return document.getElementById(id); }
+  function fmtIt(n){ return Math.round(n).toLocaleString('it-IT'); }
+  function distKm(a, b){ return Math.hypot(X(a[0]) - X(b[0]), Z(a[1]) - Z(b[1])); }
+  var PORT = [-7.272,38.734,-7.284,38.713,-7.293,38.656,-7.291,38.638,-7.27,38.618,-7.318,38.556,-7.346,38.494,-7.335,38.469,-7.359,38.446,-7.317,38.425,-7.196,38.292,-7.167,38.272,-7.127,38.191,-7.104,38.174,-7.063,38.178,-7.026,38.2,-6.964,38.206,-6.948,38.197,-7.024,38.023,-7.049,38.02,-7.123,38.04,-7.16,37.997,-7.185,37.989,-7.223,37.994,-7.273,37.977,-7.269,37.949,-7.307,37.851,-7.334,37.812,-7.444,37.73,-7.472,37.637,-7.514,37.601,-7.516,37.581,-7.53,37.567,-7.515,37.529,-7.476,37.494,-7.469,37.476,-7.462,37.418,-7.445,37.387,-7.429,37.237,-7.414,37.193,-7.4,37.179,-7.408,37.165,-7.446,37.18,-7.512,37.172,-7.627,37.114,-7.82,36.999,-7.95,37.014,-7.958,37.003,-7.991,37.014,-7.977,36.987,-8.035,37.038,-8.107,37.069,-8.179,37.088,-8.293,37.078,-8.365,37.098,-8.439,37.083,-8.537,37.118,-8.58,37.124,-8.642,37.118,-8.686,37.083,-8.748,37.083,-8.837,37.057,-8.859,37.041,-8.879,37.047,-8.946,37.008,-8.983,37.027,-8.998,37.021,-8.986,37.063,-8.914,37.17,-8.923,37.2,-8.881,37.232,-8.867,37.277,-8.883,37.31,-8.839,37.36,-8.816,37.418,-8.795,37.535,-8.827,37.601,-8.799,37.698,-8.758,37.707,-8.752,37.731,-8.809,37.723,-8.817,37.74,-8.797,37.845,-8.805,37.902,-8.821,37.927,-8.895,37.953,-8.868,37.974,-8.816,38.062,-8.774,38.187,-8.795,38.359,-8.821,38.399,-8.878,38.449,-8.943,38.481,-8.927,38.494,-8.905,38.486,-8.868,38.461,-8.8,38.439,-8.799,38.426,-8.757,38.427,-8.657,38.406,-8.607,38.419,-8.663,38.425,-8.736,38.452,-8.753,38.488,-8.737,38.522,-8.761,38.538,-8.758,38.563,-8.773,38.565,-8.793,38.534,-8.813,38.529,-8.78,38.505,-8.788,38.481,-8.906,38.512,-8.955,38.505,-9.0,38.464,-8.992,38.459,-9.049,38.441,-9.146,38.431,-9.2,38.412,-9.231,38.419,-9.231,38.438,-9.19,38.473,-9.184,38.552,-9.253,38.665,-9.145,38.681,-9.108,38.659,-9.114,38.679,-9.052,38.694,-9.021,38.727,-8.943,38.776,-8.97,38.835,-8.963,38.851,-8.986,38.849,-9.012,38.913,-8.943,39.015,-8.908,39.036,-8.827,39.049,-8.765,39.098,-8.836,39.057,-8.923,39.049,-8.936,39.041,-9.059,38.871,-9.1,38.83,-9.107,38.814,-9.098,38.738,-9.113,38.714,-9.22,38.694,-9.285,38.699,-9.322,38.67,-9.405,38.704,-9.472,38.702,-9.492,38.708,-9.485,38.745,-9.497,38.81,-9.455,38.85,-9.423,38.931,-9.437,39.029,-9.423,39.079,-9.351,39.197,-9.341,39.267,-9.354,39.316,-9.409,39.375,-9.353,39.368,-9.261,39.418,-9.24,39.42,-9.218,39.406,-9.206,39.415,-9.23,39.441,-9.183,39.493,-9.136,39.516,-9.09,39.579,-9.09,39.616,-9.072,39.68,-8.868,40.125,-8.853,40.139,-8.825,40.12,-8.785,40.119,-8.816,40.147,-8.896,40.165,-8.908,40.201,-8.865,40.275,-8.753,40.641,-8.745,40.647,-8.745,40.619,-8.71,40.653,-8.69,40.647,-8.696,40.674,-8.662,40.67,-8.642,40.694,-8.666,40.713,-8.664,40.724,-8.604,40.736,-8.573,40.756,-8.64,40.74,-8.668,40.747,-8.684,40.783,-8.646,40.824,-8.655,40.845,-8.663,40.815,-8.671,40.811,-8.676,40.824,-8.69,40.804,-8.714,40.709,-8.751,40.653,-8.655,40.994,-8.666,41.133,-8.648,41.153,-8.686,41.159,-8.737,41.25,-8.732,41.263,-8.744,41.328,-8.784,41.394,-8.786,41.435,-8.775,41.468,-8.831,41.672,-8.827,41.683,-8.743,41.697,-8.696,41.722,-8.83,41.695,-8.861,41.704,-8.88,41.737,-8.872,41.811,-8.879,41.839,-8.868,41.859,-8.763,41.932,-8.751,41.969,-8.671,42.0,-8.653,42.031,-8.627,42.051,-8.573,42.054,-8.501,42.083,-8.347,42.102,-8.295,42.13,-8.252,42.138,-8.222,42.154,-8.204,42.129,-8.204,42.07,-8.191,42.062,-8.138,42.073,-8.103,42.056,-8.095,42.041,-8.108,42.011,-8.182,41.965,-8.221,41.923,-8.232,41.886,-8.22,41.868,-8.177,41.85,-8.18,41.811,-8.093,41.807,-8.049,41.816,-7.994,41.864,-7.945,41.867,-7.926,41.908,-7.906,41.914,-7.897,41.858,-7.865,41.858,-7.85,41.876,-7.722,41.899,-7.661,41.875,-7.607,41.873,-7.623,41.842,-7.622,41.832,-7.606,41.826,-7.547,41.832,-7.516,41.865,-7.469,41.853,-7.443,41.806,-7.392,41.842,-7.322,41.845,-7.219,41.879,-7.198,41.901,-7.2,41.964,-7.16,41.986,-7.145,41.987,-7.051,41.942,-6.992,41.966,-6.945,41.943,-6.855,41.943,-6.831,41.954,-6.825,41.984,-6.794,41.98,-6.758,41.938,-6.728,41.931,-6.623,41.941,-6.609,41.962,-6.572,41.943,-6.576,41.883,-6.524,41.867,-6.577,41.74,-6.555,41.675,-6.542,41.659,-6.503,41.653,-6.461,41.677,-6.366,41.664,-6.272,41.628,-6.206,41.57,-6.28,41.497,-6.283,41.466,-6.321,41.411,-6.379,41.397,-6.379,41.377,-6.4,41.377,-6.431,41.339,-6.496,41.295,-6.563,41.271,-6.647,41.268,-6.707,41.194,-6.755,41.159,-6.765,41.109,-6.804,41.064,-6.845,41.052,-6.907,41.056,-6.928,41.048,-6.942,41.016,-6.94,41.003,-6.885,40.949,-6.855,40.887,-6.821,40.87,-6.816,40.857,-6.82,40.844,-6.837,40.84,-6.839,40.758,-6.814,40.647,-6.85,40.582,-6.848,40.565,-6.813,40.515,-6.857,40.442,-6.851,40.41,-6.794,40.356,-6.812,40.332,-6.87,40.296,-6.878,40.265,-6.896,40.255,-6.955,40.253,-7.016,40.226,-7.043,40.181,-7.016,40.119,-6.956,40.103,-6.88,40.009,-6.902,39.976,-6.91,39.932,-6.925,39.918,-6.928,39.862,-6.953,39.833,-6.985,39.821,-7.0,39.803,-6.993,39.774,-7.013,39.739,-7.01,39.715,-7.021,39.694,-7.183,39.675,-7.236,39.687,-7.341,39.672,-7.557,39.68,-7.516,39.594,-7.451,39.538,-7.418,39.524,-7.399,39.494,-7.321,39.467,-7.314,39.457,-7.332,39.385,-7.327,39.341,-7.251,39.271,-7.264,39.252,-7.266,39.231,-7.244,39.196,-7.168,39.171,-7.156,39.152,-7.169,39.122,-7.157,39.105,-7.127,39.097,-7.091,39.112,-7.039,39.109,-7.0,39.085,-6.979,39.047,-6.986,39.03,-6.975,39.023,-6.979,39.004,-7.022,38.943,-7.066,38.905,-7.052,38.885,-7.056,38.855,-7.105,38.827,-7.151,38.819,-7.18,38.791,-7.272,38.734];
+  PORT = [PORT];
+  // ---- puntine sulla carta (elementi HTML che seguono un punto del terreno)
+  var PINS = [], pinsEl = gid('pins'), pinV = new THREE.Vector3();
+  function addPin(cls, lon, lat, text){
+    var el = document.createElement('div'); el.className = 'pin ' + cls; el.innerHTML = '<i></i>' + (text ? '<b></b>' : '');
+    if (text) el.querySelector('b').textContent = text;
+    pinsEl.appendChild(el);
+    var p = { el:el, lon:lon, lat:lat, h:Math.max(0, heightAny(lon, lat)) }; PINS.push(p); return p;
+  }
+  function movePin(p, lon, lat){ p.lon = lon; p.lat = lat; p.h = Math.max(0, heightAny(lon, lat)); }
+  function removePin(p){ if (!p) return; var i = PINS.indexOf(p); if (i >= 0) PINS.splice(i, 1); if (p.el.parentNode) p.el.parentNode.removeChild(p.el); }
+  function updatePins(){
+    if (!PINS.length) return;
+    var W = canvas.clientWidth, H = canvas.clientHeight;
+    PINS.forEach(function(p){
+      pinV.set(X(p.lon), p.h/1000*state.exag + 0.3, Z(p.lat)).project(camera);
+      var off = pinV.z > 1 || Math.abs(pinV.x) > 1.05 || Math.abs(pinV.y) > 1.05;
+      if (off){ if (!p.el.hidden) p.el.hidden = true; return; }
+      if (p.el.hidden) p.el.hidden = false;
+      p.el.style.transform = 'translate3d(' + ((pinV.x*0.5 + 0.5)*W).toFixed(1) + 'px,' + ((-pinV.y*0.5 + 0.5)*H).toFixed(1) + 'px,0)';
+    });
+  }
+
+  // ================================================================ STORIA: la Reconquista dal 711 al 1492
+  // Ricostruzione didattica: la frontiera tra regni cristiani e al-Andalus è data per alcuni anni chiave e interpolata nel mezzo;
+  // i regni cristiani seguono i confini delle province di oggi. I confini veri erano fasce incerte, non linee.
+  var HIST = { year:711, yf:711, playing:false, hold:0, cv:null, tex:null, paths:null, blank:null };
+  var NONE = 35.9, ALLN = 44.5, HL0 = -9.8, HL1 = 4.5, HSTEP = 0.05, HN = Math.round((HL1 - HL0)/HSTEP) + 1;
+  var HKEYS = [
+    [711,  [[HL0, NONE], [HL1, NONE]]],
+    [718,  [[HL0, ALLN], [-7.2, ALLN], [-7.0, 43.3], [-5.5, 43.05], [-4.2, 43.05], [-3.6, 43.2], [-3.4, ALLN], [HL1, ALLN]]],
+    [756,  [[HL0, 42.0], [-8, 42.0], [-7, 42.4], [-5.5, 42.75], [-4, 42.85], [-3, 42.95], [-2.2, 43.1], [-1.9, ALLN], [HL1, ALLN]]],
+    [801,  [[HL0, 41.9], [-8, 41.9], [-7, 42.2], [-5.5, 42.6], [-4, 42.75], [-3, 42.8], [-2, 42.9], [-1.2, 42.8], [-0.5, 42.6], [0.5, 42.4], [1.2, 42.2], [1.8, 41.75], [2.0, 41.3], [HL1, 41.3]]],
+    [910,  [[HL0, 41.1], [-8, 41.1], [-7, 41.3], [-5.5, 41.45], [-4.5, 41.5], [-3.5, 41.6], [-3, 42.0], [-2.3, 42.2], [-1.5, 42.45], [-0.5, 42.5], [0.5, 42.3], [1.2, 42.0], [1.6, 41.5], [2.0, 41.25], [HL1, 41.25]]],
+    [1035, [[HL0, 41.0], [-8, 41.0], [-7, 41.1], [-5.5, 41.1], [-4.5, 41.1], [-3.5, 41.3], [-3, 41.6], [-2.3, 42.0], [-1.5, 42.3], [-0.5, 42.35], [0.5, 42.15], [1.2, 41.85], [1.5, 41.4], [2.0, 41.2], [HL1, 41.2]]],
+    [1085, [[HL0, 40.1], [-8, 40.1], [-7, 40.2], [-6, 40.1], [-5, 39.75], [-4, 39.6], [-3.3, 39.9], [-2.8, 40.6], [-2.3, 41.3], [-1.8, 42.0], [-1, 42.2], [0, 42.1], [0.8, 41.9], [1.2, 41.6], [1.4, 41.2], [2, 41.15], [HL1, 41.15]]],
+    [1150, [[HL0, 38.6], [-8.5, 38.7], [-7.5, 39.3], [-6.5, 39.6], [-5, 39.4], [-4, 39.2], [-3, 39.6], [-2.3, 40.2], [-1.5, 40.7], [-0.5, 40.85], [0.3, 40.75], [0.9, 40.6], [1.0, 40.5], [HL1, 40.5]]],
+    [1212, [[HL0, 38.4], [-8.5, 38.4], [-7.5, 38.7], [-6.5, 39.1], [-5, 38.9], [-4, 38.75], [-3, 38.9], [-2.3, 39.3], [-1.5, 39.9], [-0.8, 40.2], [0, 40.45], [0.5, 40.5], [HL1, 40.5]]],
+    [1240, [[HL0, 37.25], [-8, 37.3], [-7.4, 37.7], [-6.5, 38.0], [-5.6, 37.8], [-4.9, 37.65], [-4.3, 37.9], [-3.5, 38.15], [-2.5, 38.35], [-1.5, 38.6], [-0.6, 38.85], [0.25, 38.85], [0.3, NONE], [HL1, NONE]]],
+    [1252, [[HL0, NONE], [-5.5, NONE], [-5.45, 36.9], [-4.8, 37.2], [-4, 37.45], [-3, 37.6], [-2.3, 37.6], [-1.75, 37.3], [-1.7, NONE], [HL1, NONE]]],
+    [1350, [[HL0, NONE], [-5.3, NONE], [-5.25, 36.5], [-4.8, 37.05], [-4, 37.4], [-3, 37.6], [-2.3, 37.6], [-1.8, 37.3], [-1.75, NONE], [HL1, NONE]]],
+    [1481, [[HL0, NONE], [-5.3, NONE], [-5.25, 36.5], [-4.7, 36.95], [-4, 37.3], [-3, 37.55], [-2.3, 37.6], [-1.85, 37.3], [-1.8, NONE], [HL1, NONE]]],
+    [1488, [[HL0, NONE], [-4.05, NONE], [-4.0, 37.15], [-3, 37.5], [-2.3, 37.55], [-1.9, 37.3], [-1.85, NONE], [HL1, NONE]]],
+    [1490, [[HL0, NONE], [-4.0, NONE], [-3.95, 37.0], [-3.6, 37.3], [-3.0, 37.2], [-2.9, NONE], [HL1, NONE]]],
+    [1492, [[HL0, NONE], [HL1, NONE]]]
+  ].map(function(k){
+    var p = k[1], a = new Float32Array(HN), j = 0;
+    for (var i=0;i<HN;i++){ var lon = HL0 + i*HSTEP; while (j < p.length - 2 && lon > p[j + 1][0]) j++;
+      var t = Math.max(0, Math.min(1, (lon - p[j][0])/((p[j + 1][0] - p[j][0]) || 1))); a[i] = p[j][1] + (p[j + 1][1] - p[j][1])*t; }
+    return { y:k[0], a:a };
+  });
+  function frontier(y){
+    var k = 0; while (k < HKEYS.length - 2 && y >= HKEYS[k + 1].y) k++;
+    var A = HKEYS[k], B = HKEYS[k + 1], t = Math.max(0, Math.min(1, (y - A.y)/(B.y - A.y))), o = new Float32Array(HN);
+    for (var i=0;i<HN;i++) o[i] = A.a[i] + (B.a[i] - A.a[i])*t;
+    return o;
+  }
+  var HCOL = { vis:'#c9b48a', leo:'#e2b23f', cas:'#d9605a', nav:'#9a78c9', ara:'#f0913c', cat:'#f3c59c', por:'#4f93d6', mus:'#3f9e6c' };
+  var CATP = { 'Barcellona':1, 'Gerona':1, 'Lerida':1, 'Tarragona':1 }, ARAP = { 'Huesca':1, 'Saragozza':1, 'Teruel':1 }, VALP = { 'Castellón':1, 'Valencia':1, 'Alicante':1, 'Isole Baleari':1 },
+      LEOP = { 'Asturie':1, 'León':1, 'La Coruña':1, 'Lugo':1, 'Ourense':1, 'Pontevedra':1, 'Zamora':1, 'Salamanca':1, 'Cáceres':1, 'Badajoz':1 };
+  function kingdomOf(n, y){
+    if (y < 718) return 'vis';
+    if (n === 'Portogallo') return y < 1139 ? 'leo' : 'por';
+    if (n === 'Navarra') return 'nav';
+    if (CATP[n]) return y < 1137 ? 'cat' : 'ara';
+    if (ARAP[n]) return y < 1035 ? 'nav' : 'ara';
+    if (VALP[n]) return 'ara';
+    if (n === 'La Rioja' || n === 'Biscaglia') return y < 1000 ? 'leo' : (y < 1076 ? 'nav' : 'cas');
+    if (n === 'Álava' || n === 'Guipúzcoa') return y < 1000 ? 'leo' : (y < 1200 ? 'nav' : 'cas');
+    if (LEOP[n]) return y < 1230 ? 'leo' : 'cas';
+    return y < 1035 ? 'leo' : 'cas';
+  }
+  function musName(y){ return y < 718 ? '' : y < 756 ? 'al-Andalus (provincia del califfato di Damasco)' : y < 929 ? 'Emirato di Cordova' : y < 1031 ? 'Califfato di Cordova' : y < 1086 ? 'Regni di taifa' :
+    y < 1147 ? 'Impero almoravide' : y < 1229 ? 'Impero almohade' : y < 1238 ? 'ultimi regni di taifa' : y < 1492 ? 'Regno di Granada' : ''; }
+  function northNames(y){
+    if (y < 718) return ['Regno visigoto'];
+    var o = [];
+    if (y < 910) o.push('Regno delle Asturie'); else if (y < 1230) o.push('Regno di León');
+    if (y >= 1035) o.push(y < 1230 ? 'Regno di Castiglia' : 'Corona di Castiglia');
+    if (y >= 824) o.push(y < 1162 ? 'Regno di Pamplona' : 'Regno di Navarra');
+    if (y >= 1035) o.push(y < 1137 ? 'Regno d’Aragona' : 'Corona d’Aragona');
+    if (y >= 801 && y < 1137) o.push('Contee catalane');
+    if (y >= 1139) o.push('Regno del Portogallo');
+    return o;
+  }
+  var HEV = [
+    [711, 'Guadalete', -6.0, 36.6, 'Un esercito arabo e berbero guidato da Tariq attraversa lo stretto e sconfigge il re visigoto Rodrigo. In pochi anni quasi tutta la penisola è conquistata.'],
+    [722, 'Covadonga', -5.05, 43.31, 'Sulle montagne delle Asturie il nobile Pelagio ferma una spedizione musulmana: per la tradizione, qui comincia la Reconquista.'],
+    [756, 'Cordova', -4.78, 37.88, 'Abd al-Rahman I, fuggito da Damasco, fonda l’emirato di Cordova, indipendente dal resto del mondo islamico.'],
+    [801, 'Barcellona', 2.17, 41.39, 'I Franchi di Ludovico, figlio di Carlo Magno, conquistano Barcellona: nasce la Marca Hispanica, da cui verranno le contee catalane.'],
+    [929, 'Cordova', -4.78, 37.88, 'Abd al-Rahman III si proclama califfo. Cordova, con la sua grande moschea e le sue biblioteche, è una delle città più grandi e ricche d’Europa.'],
+    [1031, 'Cordova', -4.78, 37.88, 'Il califfato si spezza in tanti piccoli regni rivali, le taifas: deboli e divisi, pagano tributi ai re cristiani.'],
+    [1085, 'Toledo', -4.02, 39.86, 'Alfonso VI di León e Castiglia conquista Toledo, l’antica capitale dei Visigoti. I musulmani chiamano in aiuto gli Almoravidi dall’Africa.'],
+    [1094, 'Valencia', -0.38, 39.47, 'Rodrigo Díaz de Vivar, il Cid, conquista Valencia e la governa fino alla morte (1099); poi la città torna ai musulmani.'],
+    [1118, 'Saragozza', -0.88, 41.65, 'Alfonso I d’Aragona, «il Battagliero», conquista Saragozza: la valle dell’Ebro passa ai cristiani.'],
+    [1139, 'Portogallo', -8.29, 41.44, 'Alfonso Henriques si proclama re: nasce il regno del Portogallo, che si stacca dal León.'],
+    [1147, 'Lisbona', -9.14, 38.72, 'Con l’aiuto di crociati inglesi, fiamminghi e tedeschi diretti in Terrasanta, i portoghesi conquistano Lisbona.'],
+    [1212, 'Las Navas de Tolosa', -3.58, 38.28, 'I re di Castiglia, Aragona e Navarra, uniti, sconfiggono gli Almohadi: si apre la strada verso la valle del Guadalquivir.'],
+    [1230, 'León', -5.57, 42.6, 'Ferdinando III unisce per sempre León e Castiglia in un’unica corona.'],
+    [1236, 'Cordova', -4.78, 37.88, 'Ferdinando III conquista Cordova: la grande moschea diventa cattedrale.'],
+    [1238, 'Valencia', -0.38, 39.47, 'Giacomo I d’Aragona conquista Valencia. A sud nasce il regno di Granada, che resisterà per altri 250 anni.'],
+    [1248, 'Siviglia', -5.98, 37.39, 'Dopo un lungo assedio Ferdinando III conquista Siviglia. Ai musulmani resta solo il regno di Granada.'],
+    [1469, 'Valladolid', -4.72, 41.65, 'Isabella di Castiglia sposa Ferdinando d’Aragona: pochi anni dopo le due corone saranno unite.'],
+    [1492, 'Granada', -3.6, 37.18, 'Il 2 gennaio il sultano Boabdil consegna Granada ai Re Cattolici: la Reconquista è finita. Ad agosto Colombo parte da Palos.']
+  ];
+  // nomi dei regni sulla carta, ciascuno con gli anni in cui compare
+  (function(){
+    function h(name, lon, lat, y0, y1, big){ lab('hst', name, lon, lat, 1, { pr:99, yr:[y0, y1], big:!!big }); }
+    h('Regno visigoto', -4.0, 40.2, 700, 713, true);
+    [[718, 1085, -4.6, 39.2], [1086, 1212, -4.7, 38.2], [1213, 1251, -4.0, 37.55], [1252, 1491, -3.5, 37.2]].forEach(function(p){
+      [[718, 755, 'al-Andalus'], [756, 928, 'Emirato di Cordova'], [929, 1030, 'Califfato di Cordova'], [1031, 1085, 'Regni di taifa'], [1086, 1146, 'Almoravidi'], [1147, 1228, 'Almohadi'], [1229, 1237, 'al-Andalus'], [1238, 1491, 'Regno di Granada']
+      ].forEach(function(n){ var a = Math.max(p[0], n[0]), b = Math.min(p[1], n[1]); if (a <= b) h(n[2], p[2], p[3], a, b, p[0] < 1252); });
+    });
+    h('Asturie', -5.9, 43.28, 718, 909); h('León', -5.9, 42.25, 910, 1229);
+    h('Castiglia', -3.6, 42.25, 1035, 1084); h('Castiglia', -3.8, 40.9, 1085, 1229); h('Corona di Castiglia', -4.3, 40.3, 1230, 1492, true);
+    h('Pamplona', -1.65, 42.78, 824, 1161); h('Navarra', -1.65, 42.78, 1162, 1492);
+    h('Aragona', -0.3, 42.4, 1035, 1117); h('Aragona', -0.8, 41.75, 1118, 1136); h('Corona d’Aragona', -0.4, 41.3, 1137, 1492);
+    h('Contee catalane', 1.9, 41.95, 801, 1136);
+    h('Contea del Portogallo', -8.2, 41.5, 1096, 1138); h('Portogallo', -8.1, 40.4, 1139, 1492);
+    HEV.forEach(function(e){ lab('evt', e[1] + ' ' + e[0], e[2], e[3], 1, { pr:100, mr:6, yr:[e[0], e[0] + 28] }); });
+  })();
+  POINT.evt = 1;
+  MODE_LABELS.storia = { hst:1, evt:1, sea:1 };
+  function buildHist(){
+    var b = BLK[0], S = 2, W = b.NX*S, H = b.NY*S;
+    var cv = document.createElement('canvas'); cv.width = W; cv.height = H; HIST.cv = cv; HIST.W = W; HIST.H = H;
+    function px(lon){ return (lon - b.LON0)/(b.LON1 - b.LON0)*W; } function py(lat){ return (b.LAT1 - lat)/(b.LAT1 - b.LAT0)*H; }
+    HIST.px = px; HIST.py = py;
+    HIST.paths = [];
+    function mk(name, rings){ var p = new Path2D(); rings.forEach(function(r){ for (var i=0;i<r.length;i+=2){ if (i === 0) p.moveTo(px(r[i]), py(r[i + 1])); else p.lineTo(px(r[i]), py(r[i + 1])); } p.closePath(); }); HIST.paths.push({ n:name, p:p }); }
+    POL.prov.forEach(function(pv){ if (pv[1] === 'Isole Canarie' || pv[1] === 'Ceuta' || pv[1] === 'Melilla') return; mk(pv[0], pv[5]); });
+    mk('Portogallo', PORT);
+    var t = new THREE.CanvasTexture(cv); t.premultiplyAlpha = true; t.generateMipmaps = false; t.minFilter = THREE.LinearFilter; t.wrapS = t.wrapT = THREE.ClampToEdgeWrapping;
+    HIST.tex = t; b.histTex = t;
+    var bl = document.createElement('canvas'); bl.width = bl.height = 4; HIST.blank = new THREE.CanvasTexture(bl); HIST.blank.premultiplyAlpha = true;
+    BLK.forEach(function(q){ if (q !== b) q.histTex = HIST.blank; });
+    drawHist();
+  }
+  function drawHist(){
+    var c = HIST.cv.getContext('2d'), y = HIST.year, W = HIST.W, H = HIST.H, px = HIST.px, py = HIST.py;
+    c.globalCompositeOperation = 'source-over'; c.clearRect(0, 0, W, H); c.lineJoin = 'round'; c.lineWidth = 2;
+    HIST.paths.forEach(function(q){ c.fillStyle = c.strokeStyle = HCOL[kingdomOf(q.n, y)]; c.fill(q.p, 'evenodd'); c.stroke(q.p); });
+    var f = frontier(HIST.yf);
+    c.globalCompositeOperation = 'source-atop';
+    c.beginPath(); c.moveTo(px(HL0), py(f[0]));
+    for (var i=1;i<HN;i++) c.lineTo(px(HL0 + i*HSTEP), py(f[i]));
+    c.lineTo(px(HL1), H + 4); c.lineTo(px(HL0), H + 4); c.closePath();
+    c.fillStyle = HCOL.mus; c.fill();
+    c.beginPath(); c.moveTo(px(HL0), py(f[0])); for (i=1;i<HN;i++) c.lineTo(px(HL0 + i*HSTEP), py(f[i]));
+    c.strokeStyle = 'rgba(20,40,30,.75)'; c.lineWidth = 2.5; c.stroke();
+    c.globalCompositeOperation = 'source-over';
+    HIST.tex.needsUpdate = true;
+  }
+  function lastEvent(y){ var e = null; HEV.forEach(function(q){ if (q[0] <= y) e = q; }); return e; }
+  function setYear(yf, keepPlaying){
+    yf = Math.max(711, Math.min(1492, yf)); HIST.yf = yf;
+    var y = Math.floor(yf + 1e-6), ch = y !== HIST.year; HIST.year = y;
+    if (!keepPlaying) stopHist();
+    drawHist();
+    if (ch || !gid('tState').firstChild){
+      gid('tYear').textContent = y; gid('tRange').value = y;
+      var m = musName(y), st = gid('tState'); st.textContent = '';
+      var parts = []; if (m) parts.push(['Sud', m]); parts.push(['Nord', northNames(y).join(', ')]);
+      if (y >= 1492) parts = [['Tutta la penisola', 'Corona di Castiglia, Corona d’Aragona, Navarra e Portogallo']];
+      parts.forEach(function(p, i){ if (i) st.appendChild(document.createTextNode('  ·  ')); st.appendChild(document.createTextNode(p[0] + ': ')); var bb = document.createElement('b'); bb.textContent = p[1]; st.appendChild(bb); });
+      var e = lastEvent(y), cap = gid('tCap'); cap.textContent = '';
+      if (e){ var eb = document.createElement('b'); eb.textContent = e[0] + ' · ' + e[1] + '. '; cap.appendChild(eb); cap.appendChild(document.createTextNode(e[4])); }
+      labelsDirty = true;
+    }
+  }
+  function stopHist(){ HIST.playing = false; gid('tPlay').textContent = HIST.year >= 1492 ? 'Ricomincia' : 'Avvia'; }
+  function tickHist(dt){
+    if (HIST.hold > 0){ HIST.hold -= dt; return; }
+    var prev = HIST.yf, next = prev + dt*16, hit = null;
+    HEV.forEach(function(e){ if (!hit && e[0] > prev + 0.01 && e[0] <= next) hit = e; });
+    if (hit){ next = hit[0]; HIST.hold = REDUCED ? 0.6 : 2.4; }
+    setYear(next, true);
+    if (next >= 1492){ stopHist(); }
+  }
+  gid('tPlay').addEventListener('click', function(){
+    if (HIST.playing){ stopHist(); return; }
+    if (HIST.year >= 1492) setYear(711);
+    HIST.playing = true; HIST.hold = 0; gid('tPlay').textContent = 'Pausa';
+  });
+  gid('tRange').addEventListener('input', function(){ setYear(+this.value); });
+  gid('tPrev').addEventListener('click', function(){ var e = null; HEV.forEach(function(q){ if (q[0] < HIST.year) e = q; }); setYear(e ? e[0] : 711); });
+  gid('tNext').addEventListener('click', function(){ var e = null; HEV.forEach(function(q){ if (!e && q[0] > HIST.year) e = q; }); setYear(e ? e[0] : 1492); });
+
+  // ================================================================ STAGIONI E CLIMA: la Spagna mese per mese
+  // Valori medi 1981-2010 (AEMET) per le città; per le fasce climatiche si usano valori rappresentativi (schema didattico).
+  var SEA = { t:0, m:-1, playing:false, pins:[], sky:null, clouds:null, last:-9 };
+  var MESI = ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'];
+  var STAG = ['inverno', 'inverno', 'primavera', 'primavera', 'primavera', 'estate', 'estate', 'estate', 'autunno', 'autunno', 'autunno', 'inverno'];
+  var SCAP = [
+    'Neve su Pirenei, Cordigliera Cantabrica, Sistema Centrale e Sierra Nevada. Sulla Meseta fa freddo e gela spesso; sulle coste del Mediterraneo l’inverno è mite.',
+    'Le perturbazioni che arrivano dall’Atlantico bagnano soprattutto la Galizia e il nord. Nel sud fioriscono già i mandorli.',
+    'Arriva la primavera: la neve si ritira verso le cime e la Meseta comincia a rinverdire.',
+    'È il periodo più verde dell’anno: piove un po’ dappertutto, anche nell’interno.',
+    'Il disgelo sui monti gonfia i fiumi. Al sud comincia il caldo e le piogge diminuiscono.',
+    'Comincia l’estate: nel sud e nell’interno le piogge quasi cessano e l’erba ingiallisce.',
+    'Siccità nel centro e nel sud: nella valle del Guadalquivir si possono superare i 40 °C. Il nord atlantico resta verde e fresco.',
+    'È il mese più secco: fiumi in magra e campi gialli. Solo la «Spagna verde» riceve piogge regolari.',
+    'Tornano le prime piogge. Sulla costa mediterranea possono arrivare temporali violenti, la «gota fría».',
+    'L’autunno è la stagione più piovosa sul Mediterraneo; l’interno torna a rinverdire.',
+    'Piogge abbondanti sul versante atlantico; sulle cime più alte ricompare la neve.',
+    'Neve sui monti, nebbie e gelate sulla Meseta, piogge frequenti in Galizia. Alle Canarie sembra primavera.'
+  ];
+  // città: [nome, lon, lat, temperature medie °C, precipitazioni mm]
+  var SCITY = [
+    ['La Coruña', -8.41, 43.36, [10.8, 11.1, 12.4, 13.0, 15.0, 17.4, 19.0, 19.6, 18.6, 16.1, 13.3, 11.5], [112, 88, 75, 88, 75, 44, 34, 35, 64, 130, 138, 131]],
+    ['Bilbao', -2.93, 43.26, [9.3, 9.7, 11.5, 12.6, 15.7, 18.4, 20.4, 20.9, 19.2, 16.4, 12.4, 9.9], [120, 86, 90, 107, 78, 60, 50, 76, 73, 111, 147, 122]],
+    ['Madrid', -3.70, 40.42, [6.3, 7.9, 11.2, 12.9, 16.7, 22.2, 25.6, 25.1, 20.9, 15.1, 9.9, 6.9], [33, 34, 25, 45, 50, 21, 12, 10, 22, 60, 58, 51]],
+    ['Saragozza', -0.89, 41.65, [6.6, 8.2, 11.6, 13.8, 18.0, 22.6, 25.3, 25.0, 21.2, 16.2, 10.6, 7.0], [21, 22, 19, 39, 44, 26, 17, 17, 30, 36, 30, 21]],
+    ['Siviglia', -5.98, 37.39, [10.9, 12.5, 15.6, 17.3, 20.7, 25.1, 28.2, 27.9, 25.0, 20.2, 15.1, 11.9], [66, 50, 36, 54, 30, 10, 2, 5, 27, 68, 91, 99]],
+    ['Malaga', -4.42, 36.72, [12.1, 12.9, 14.7, 16.3, 19.3, 23.0, 25.5, 26.0, 23.5, 19.5, 15.7, 13.2], [69, 60, 52, 44, 20, 6, 0, 6, 20, 57, 100, 100]],
+    ['Santa Cruz de Tenerife', -16.25, 28.47, [18.2, 18.3, 19.0, 19.7, 21.0, 22.9, 25.0, 25.5, 24.9, 23.4, 21.3, 19.4], [32, 35, 38, 12, 4, 1, 0, 2, 7, 19, 34, 43]]
+  ];
+  // fasce climatiche (1 oceanico, 2 mediterraneo, 3 continentale, 4 montagna, 5 subtropicale): piogge e temperature tipiche
+  var ZP = [null,
+    [116, 87, 83, 98, 77, 52, 42, 56, 69, 121, 143, 127], [68, 55, 44, 49, 25, 8, 1, 6, 24, 63, 96, 100], [27, 28, 22, 42, 47, 24, 15, 14, 26, 48, 44, 36],
+    [130, 110, 100, 120, 120, 70, 40, 45, 75, 140, 150, 150], [32, 35, 38, 12, 4, 1, 0, 2, 7, 19, 34, 43]];
+  var ZT = [null,
+    [10, 10.4, 12, 12.8, 15.4, 17.9, 19.7, 20.3, 18.9, 16.3, 12.9, 10.7], [11.5, 12.7, 15.2, 16.8, 20, 24, 26.9, 27, 24.3, 19.9, 15.4, 12.6], [6.5, 8, 11.4, 13.4, 17.4, 22.4, 25.5, 25, 21, 15.7, 10.3, 7],
+    [-1, 0, 2, 4, 8, 13, 17, 17, 13, 8, 3, 0], [18.2, 18.3, 19, 19.7, 21, 22.9, 25, 25.5, 24.9, 23.4, 21.3, 19.4]];
+  // quota della neve (m) a 42,5° di latitudine; verso sud sale di circa 110 m per grado
+  var SNOWL = [1500, 1500, 1700, 2000, 2400, 2900, 3600, 3800, 3400, 2600, 2000, 1600];
+  function mlerp(a, t){ var i = Math.floor(t) % 12, f = t - Math.floor(t); return a[i] + (a[(i + 1) % 12] - a[i])*f; }
+  function snowLine(t, lat){ return mlerp(SNOWL, t) + (42.5 - lat)*110; }
+  var HY = [[0, 163, 184, 132], [200, 183, 191, 138], [600, 178, 160, 114], [1000, 160, 138, 98], [2000, 116, 94, 70], [3500, 186, 184, 180]];
+  function buildSeason(){
+    BLK.forEach(function(b){
+      var cv = document.createElement('canvas'); cv.width = b.NX; cv.height = b.NY;
+      b.seaCv = cv; b.seaImg = cv.getContext('2d').createImageData(b.NX, b.NY);
+      // colore di base (tinte altimetriche) calcolato una volta sola
+      var n = b.NX*b.NY, base = new Uint8Array(n*3), G = b.G;
+      for (var i=0;i<n;i++){ var h = G[i], k = 0; while (k < HY.length - 2 && h > HY[k + 1][0]) k++;
+        var A = HY[k], B = HY[k + 1], f = Math.max(0, Math.min(1, (h - A[0])/(B[0] - A[0])));
+        base[i*3] = A[1] + (B[1] - A[1])*f; base[i*3 + 1] = A[2] + (B[2] - A[2])*f; base[i*3 + 2] = A[3] + (B[3] - A[3])*f; }
+      b.seaBase = base;
+      var t = new THREE.CanvasTexture(cv); t.premultiplyAlpha = true; t.generateMipmaps = false; t.minFilter = THREE.LinearFilter; t.wrapS = t.wrapT = THREE.ClampToEdgeWrapping;
+      b.seaTex = t;
+    });
+    buildClouds();
+    drawSeason();
+  }
+  function drawSeason(){
+    var t = SEA.t;
+    BLK.forEach(function(b){
+      var d = b.seaImg.data, G = b.G, Zi = b.ZID, base = b.seaBase, NX = b.NX, NY = b.NY, gz = [0, 0, 0, 0, 0, 0];
+      // quanto è "verde" ogni fascia: piogge degli ultimi due mesi rispetto al caldo
+      for (var z=1;z<=5;z++){ var p = 0.55*mlerp(ZP[z], t) + 0.45*mlerp(ZP[z], t + 11), tt = Math.max(4, mlerp(ZT[z], t)), q = p/(2*tt); gz[z] = Math.max(0, Math.min(1, (q - 0.35)/1.5)); }
+      for (var j=0;j<NY;j++){
+        var lat = b.LAT1 - (j + 0.5)/b.PPD, sl = snowLine(t, lat);
+        for (var i=0;i<NX;i++){
+          var k = j*NX + i, o = k*4, h = G[k], z = Zi[k];
+          if (!z){ d[o + 3] = 0; continue; }
+          var gr = gz[z], r = base[k*3], g2 = base[k*3 + 1], bl = base[k*3 + 2];
+          // verde nei mesi piovosi, giallo paglia in quelli secchi (meno in alta quota)
+          var w = 0.62*Math.max(0, 1 - h/2600), tr = 214 + (96 - 214)*gr, tg = 190 + (158 - 190)*gr, tb = 120 + (78 - 120)*gr;
+          r += (tr - r)*w; g2 += (tg - g2)*w; bl += (tb - bl)*w;
+          var s = (h - sl + 150)/300; if (s > 0){ if (s > 1) s = 1; r += (250 - r)*s; g2 += (251 - g2)*s; bl += (255 - bl)*s; }
+          d[o] = r; d[o + 1] = g2; d[o + 2] = bl; d[o + 3] = 255;
+        }
+      }
+      b.seaCv.getContext('2d').putImageData(b.seaImg, 0, 0); b.seaTex.needsUpdate = true;
+    });
+    SEA.last = t;
+  }
+  function tempCol(T){ var f = Math.max(0, Math.min(1, (T - 4)/24)); return 'rgb(' + Math.round(40 + 190*f) + ',' + Math.round(110 + 40*Math.sin(f*3.14) - 50*f) + ',' + Math.round(210 - 180*f) + ')'; }
+  function setMonth(t, keep){
+    t = ((t % 12) + 12) % 12; SEA.t = t;
+    if (!keep && SEA.playing) stopSeason();
+    if (Math.abs(t - SEA.last) > 0.07 || !keep) drawSeason();
+    var m = Math.floor(t + 0.5) % 12; if (m === SEA.m) return; SEA.m = m;
+    gid('sMonth').textContent = MESI[m]; gid('sSeason').textContent = STAG[m]; gid('sCap').textContent = SCAP[m]; if (!SEA.playing) gid('sRange').value = m;
+    SEA.pins.forEach(function(p, i){ var c = SCITY[i]; p.el.querySelector('b').textContent = c[0] + (canvas.clientWidth <= 860 ? '\n' : ' · ') + String(c[3][m].toFixed(0)).replace('-', '−') + ' °C · ' + c[4][m] + ' mm'; p.el.querySelector('i').style.background = tempCol(c[3][m]); });
+  }
+  function stopSeason(){ SEA.playing = false; gid('sPlay').textContent = 'Avvia'; gid('sRange').value = SEA.m; }
+  function seasonShow(on){
+    gid('seasonbar').hidden = !on; SEA.sky.visible = on;
+    if (on && !SEA.pins.length){ SCITY.forEach(function(c){ SEA.pins.push(addPin('met', c[1], c[2], c[0])); }); SEA.m = -1; setMonth(SEA.t, true); }
+    if (!on){ if (SEA.playing) stopSeason(); SEA.pins.forEach(removePin); SEA.pins = []; }
+  }
+  // ---- nuvolette: compaiono dove (e quando) piove, mandano pioggia e ogni tanto un fulmine
+  var CSITES = [[-8.3, 43.0, 1], [-7.2, 43.3, 1], [-6.0, 43.3, 1], [-4.6, 43.2, 1], [-3.2, 43.2, 1], [-2.0, 43.1, 1],
+    [-0.3, 42.6, 4], [1.2, 42.5, 4], [-5.0, 40.3, 4], [-3.2, 37.1, 4], [-2.6, 42.0, 4],
+    [-5.2, 41.8, 3], [-3.6, 41.4, 3], [-4.6, 39.6, 3], [-2.6, 39.3, 3], [-1.0, 41.4, 3], [-6.2, 39.2, 3],
+    [2.0, 41.7, 2], [0.1, 40.4, 2], [-0.5, 39.2, 2], [-1.2, 38.0, 2], [-5.6, 37.4, 2], [-4.3, 37.0, 2], [-6.6, 37.4, 2], [2.9, 39.6, 2],
+    [-16.5, 28.3, 5], [-15.6, 28.0, 5], [-13.9, 28.5, 5]];
+  var CJ = [0.05, 0.75, 0.3, 0.55, 0.15, 0.9, 0.1, 0.5, 0.35, 0.7, 0.85, 0.2, 0.6, 0.4, 0.8, 0.95, 0.1, 0.3, 0.65, 0.15, 0.85, 0.45, 0.7, 0.25, 0.55, 0.2, 0.6, 0.9];
+  var CK = 8, CB = 5;
+  function cloudTex(dark){
+    var cv = document.createElement('canvas'); cv.width = 256; cv.height = 160; var c = cv.getContext('2d');
+    c.save(); c.beginPath(); c.rect(0, 0, 256, 136); c.clip();
+    c.shadowColor = 'rgba(30,40,60,.45)'; c.shadowBlur = 7; c.fillStyle = dark ? '#8d96a5' : '#ffffff';
+    c.beginPath(); [[66, 104, 40], [112, 76, 50], [164, 86, 46], [202, 108, 34], [132, 112, 44], [94, 116, 36]].forEach(function(p){ c.moveTo(p[0] + p[2], p[1]); c.arc(p[0], p[1], p[2], 0, 6.2832); }); c.fill();
+    c.shadowColor = 'transparent'; c.globalCompositeOperation = 'source-atop';
+    var g = c.createLinearGradient(0, 30, 0, 140); g.addColorStop(0, dark ? '#d5dae2' : '#ffffff'); g.addColorStop(1, dark ? '#59616f' : '#b9c5d8');
+    c.fillStyle = g; c.fillRect(0, 0, 256, 160); c.restore();
+    return new THREE.CanvasTexture(cv);
+  }
+  function buildClouds(){
+    SEA.sky = new THREE.Group(); SEA.sky.visible = false; scene.add(SEA.sky);
+    SEA.texW = cloudTex(false); SEA.texD = cloudTex(true);
+    SEA.clouds = CSITES.map(function(s, i){
+      var sp = new THREE.Sprite(new THREE.SpriteMaterial({ map:SEA.texW, transparent:true, depthWrite:false, opacity:0 }));
+      sp.center.set(0.5, 0.2); sp.visible = false; sp.renderOrder = 5; SEA.sky.add(sp);
+      var off = []; for (var k=0;k<CK;k++) off.push([Math.sin(i*7.1 + k*3.7)*0.5, Math.cos(i*3.3 + k*5.9)*0.16, (k*0.618 + i*0.37) % 1]);
+      return { sp:sp, lon:s[0], lat:s[1], z:zoneAt(s[0], s[1]) || s[2], x:X(s[0]), zz:Z(s[1]), gm:Math.max(0, heightAny(s[0], s[1])), j:CJ[i % CJ.length], ph:i*1.7, a:0, fl:0, bolt:null, off:off, dark:false };
+    });
+    var n = SEA.clouds.length;
+    function lines(count, color){
+      var g = new THREE.BufferGeometry(), P = new Float32Array(count*6); for (var i=1;i<P.length;i+=3) P[i] = -9999;
+      g.setAttribute('position', new THREE.BufferAttribute(P, 3));
+      var m = new THREE.LineSegments(g, new THREE.LineBasicMaterial({ color:color, transparent:true, opacity:0.95, depthWrite:false })); m.frustumCulled = false; SEA.sky.add(m); return m;
+    }
+    SEA.rain = lines(n*CK*2, 0x1f62d6); SEA.snow = lines(n*CK*2, 0xffffff); SEA.bolts = lines(n*CB*3, 0xffd21f); SEA.bolts.renderOrder = 6;
+  }
+  function stormRate(z, m){ return z === 4 && m >= 5 && m <= 8 ? 0.5 : z === 2 && m >= 8 && m <= 10 ? 0.5 : z === 3 && (m === 4 || m === 5 || m === 8) ? 0.35 : z === 1 ? 0.1 : 0.07; }
+  function tickSeason(dt, kmpp){
+    if (SEA.playing){ setMonth(SEA.t + dt/1.7, true); if (!REDUCED) gid('sRange').value = Math.floor(SEA.t); }
+    if (!SEA.sky.visible) return;
+    var t = SEA.t, m = Math.floor(t + 0.5) % 12, ex = state.exag, size = Math.max(14, Math.min(110, 44*kmpp)), alt = size*0.8, now = REDUCED ? 3 : performance.now()/1000, th = kmpp*0.7;
+    var R = SEA.rain.geometry.attributes.position.array, S = SEA.snow.geometry.attributes.position.array, B = SEA.bolts.geometry.attributes.position.array;
+    SEA.clouds.forEach(function(c, i){
+      var P = mlerp(ZP[c.z], t), target = P > 14 + c.j*62 ? Math.min(1, 0.5 + P/150) : 0;
+      c.a = dt > 0 ? c.a + (target - c.a)*Math.min(1, dt*3.5) : target;
+      var on = c.a > 0.03, s = size*(0.75 + 0.25*c.j)*(0.55 + 0.45*c.a), x = c.x + Math.sin(now*0.13 + c.ph)*size*0.3, gy = c.gm/1000*ex, y = gy + alt;
+      c.sp.visible = on;
+      if (on){
+        c.sp.position.set(x, y, c.zz); c.sp.scale.set(s*1.6, s, 1); c.sp.material.opacity = Math.min(1, c.a*1.4);
+        var dark = P > 60; if (dark !== c.dark){ c.dark = dark; c.sp.material.map = dark ? SEA.texD : SEA.texW; c.sp.material.needsUpdate = true; }
+      }
+      // pioggia (o neve, sopra la quota della neve)
+      var snowing = c.gm > snowLine(t, c.lat), nk = on ? Math.round(c.a*CK*(P > 35 ? 1 : 0.5)) : 0, len = alt*(snowing ? 0.06 : 0.17);
+      for (var k=0;k<CK;k++){
+        var o = (i*CK + k)*12, A = snowing ? S : R, O = snowing ? R : S;
+        O[o + 1] = O[o + 4] = O[o + 7] = O[o + 10] = -9999;
+        if (k >= nk){ A[o + 1] = A[o + 4] = A[o + 7] = A[o + 10] = -9999; continue; }
+        var f = (now*(snowing ? 0.55 : 1.25) + c.off[k][2]) % 1, px = x + c.off[k][0]*s*1.15, pz = c.zz + c.off[k][1]*s, py = gy + (alt*0.92)*(1 - f);
+        A[o] = A[o + 3] = px; A[o + 6] = A[o + 9] = px + th; A[o + 2] = A[o + 5] = A[o + 8] = A[o + 11] = pz; A[o + 1] = A[o + 7] = py + len; A[o + 4] = A[o + 10] = py;
+      }
+      // fulmine
+      if (c.fl > 0) c.fl -= dt;
+      else if (on && dt > 0 && P > 30 && Math.random() < stormRate(c.z, m)*c.a*dt){ c.fl = 0.3; c.bolt = [0]; for (var q=1;q<CB;q++) c.bolt.push((Math.random() - 0.5)*0.5); c.bolt.push((Math.random() - 0.5)*0.25); }
+      var show = c.fl > 0 && on && (c.fl > 0.18 || c.fl < 0.1);
+      for (var q2=0;q2<CB;q2++){
+        var ob = (i*CB + q2)*18;
+        if (!show){ for (var w=1;w<18;w+=3) B[ob + w] = -9999; continue; }
+        var x0 = x + c.bolt[q2]*s, x1 = x + c.bolt[q2 + 1]*s, y0 = gy + alt*0.95*(1 - q2/CB), y1 = gy + alt*0.95*(1 - (q2 + 1)/CB);
+        for (var w2=0;w2<3;w2++){ var dx = (w2 - 1)*th, oo = ob + w2*6; B[oo] = x0 + dx; B[oo + 1] = y0; B[oo + 2] = c.zz; B[oo + 3] = x1 + dx; B[oo + 4] = y1; B[oo + 5] = c.zz; }
+      }
+    });
+    SEA.rain.geometry.attributes.position.needsUpdate = true; SEA.snow.geometry.attributes.position.needsUpdate = true; SEA.bolts.geometry.attributes.position.needsUpdate = true;
+  }
+  MODE_LABELS.stagioni = { sea:1, rg:1 };
+  gid('sPlay').addEventListener('click', function(){ if (SEA.playing){ stopSeason(); return; } SEA.playing = true; gid('sPlay').textContent = 'Pausa'; });
+  gid('sRange').addEventListener('input', function(){ setMonth(+this.value); });
+
+  // ================================================================ VULCANO DI LA PALMA: l'eruzione del 2021 (Tajogaite)
+  // Colate dal cratere verso la costa di Tazacorte: tracciato indicativo.
+  INFO.palma = {
+    title:'Vulcano Tajogaite', eyebrow:'Eruzione del 2021 · La Palma, Isole Canarie', alt:'19 settembre – 13 dicembre 2021',
+    lon:-17.9, lat:28.612,
+    text:['Il 19 settembre 2021, sul fianco occidentale della dorsale vulcanica della Cumbre Vieja, nell’isola di La Palma, il terreno si è aperto ed è cominciata un’eruzione. È durata 85 giorni, fino al 13 dicembre: è la più lunga che si conosca sull’isola.',
+          'La lava è scesa lentamente verso ovest, come un fiume largo centinaia di metri, e ha sepolto case, strade e piantagioni di banane; il paese di Todoque è scomparso. Il 28 settembre la colata ha raggiunto l’oceano vicino a Tazacorte: raffreddandosi nell’acqua ha formato un tratto di terra nuova, un delta di lava che alle Canarie si chiama «fajana».',
+          'Nessuno è morto travolto dalla lava, perché gli abitanti sono stati allontanati in tempo: circa 7.000 persone hanno dovuto lasciare la propria casa. Il nuovo cono vulcanico è stato chiamato Tajogaite, un nome dell’antica lingua dei Guanci.'],
+    facts:[['Durata', '85 giorni: dal 19 settembre al 13 dicembre 2021'],
+           ['Lava', 'oltre 1.000 ettari coperti; arrivo al mare il 28 settembre 2021'],
+           ['Danni', 'più di 3.000 edifici distrutti; circa 843 milioni di euro di danni stimati a fine 2021'],
+           ['Persone evacuate', 'circa 7.000'],
+           ['Perché qui', 'le Canarie sono isole vulcaniche: sono nate da eruzioni sul fondo dell’oceano, e La Palma è una delle più giovani e attive']],
+    photos:[], fly:{ theta:-1.2, phi:0.8, dist:60, label:'Vola sull’eruzione' }
+  };
+  lab('pk', 'Vulcano Tajogaite', -17.8686, 28.615, 2, { h:'eruzione del 2021', pr:105, info:'palma' });
+  var VOL = { paths:[], field:null, lava:null, fount:null, smoke:[], glow:null, L:[], F:[], vent:null, on:false };
+  function softTex(){
+    var cv = document.createElement('canvas'); cv.width = cv.height = 64; var c = cv.getContext('2d'), g = c.createRadialGradient(32, 32, 0, 32, 32, 32);
+    g.addColorStop(0, 'rgba(255,255,255,1)'); g.addColorStop(0.45, 'rgba(255,255,255,.55)'); g.addColorStop(1, 'rgba(255,255,255,0)'); c.fillStyle = g; c.fillRect(0, 0, 64, 64);
+    return new THREE.CanvasTexture(cv);
+  }
+  function buildVolcano(){
+    var V = [-17.8686, 28.615];
+    [[V, [-17.885, 28.612], [-17.905, 28.606], [-17.922, 28.607], [-17.945, 28.610]],
+     [V, [-17.882, 28.622], [-17.900, 28.628], [-17.918, 28.630], [-17.945, 28.632]],
+     [V, [-17.885, 28.612], [-17.898, 28.598], [-17.912, 28.588], [-17.938, 28.582]]].forEach(function(w){
+      var out = [], sea = 0;
+      for (var s=0;s<w.length - 1 && sea < 4;s++){ var a = w[s], b = w[s + 1], n = Math.max(2, Math.round(distKm(a, b)/0.12));
+        for (var i=0;i<n && sea < 4;i++){ var p = [a[0] + (b[0] - a[0])*i/n, a[1] + (b[1] - a[1])*i/n], h = heightAny(p[0], p[1]); if (h <= 0) sea++; out.push([X(p[0]), Math.max(0, h)/1000, Z(p[1]), p[0], p[1]]); } }
+      VOL.paths.push(out);
+    });
+    VOL.vent = VOL.paths[0][0];
+    VOL.field = buildLineMesh(VOL.paths.map(function(p){ var f = []; p.forEach(function(q){ f.push(q[3], q[4]); }); return f; }), 7, 0.42, 0x2a1915, 0.95, 25, -6);
+    var tex = softTex(); VOL.grp = new THREE.Group(); VOL.grp.visible = false; scene.add(VOL.grp);
+    function points(n, size){
+      var g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.BufferAttribute(new Float32Array(n*3), 3)); g.setAttribute('color', new THREE.BufferAttribute(new Float32Array(n*3), 3));
+      var m = new THREE.Points(g, new THREE.PointsMaterial({ size:size, sizeAttenuation:false, map:tex, transparent:true, depthWrite:false, blending:THREE.AdditiveBlending, vertexColors:true }));
+      m.frustumCulled = false; m.renderOrder = 7; VOL.grp.add(m); return m;
+    }
+    var dpr = Math.min(2, window.devicePixelRatio || 1);
+    VOL.lava = points(280, 7*dpr); VOL.fount = points(54, 6*dpr);
+    for (var i=0;i<280;i++) VOL.L.push({ b:i % 5 === 0 ? 1 : (i % 5 === 1 ? 2 : 0), s:Math.random(), v:0.045 + Math.random()*0.03, j:(Math.random() - 0.5)*0.26 });
+    for (i=0;i<54;i++) VOL.F.push({ x:0, y:0, z:0, vx:0, vy:0, vz:0, life:Math.random()*1.4, max:1.4 });
+    for (i=0;i<10;i++){ var sp = new THREE.Sprite(new THREE.SpriteMaterial({ map:tex, color:0x4a4644, transparent:true, depthWrite:false, opacity:0 })); sp.renderOrder = 6; VOL.grp.add(sp); VOL.smoke.push({ sp:sp, age:i*0.8 }); }
+    VOL.glow = new THREE.Sprite(new THREE.SpriteMaterial({ map:tex, color:0xff7a1a, transparent:true, depthWrite:false, blending:THREE.AdditiveBlending })); VOL.glow.renderOrder = 7; VOL.grp.add(VOL.glow);
+  }
+  function tickVolcano(dt, kmpp){
+    var m = state.mode, on = (m === 'tutto' || m === 'rilievi') && !QZ.on;
+    VOL.field.visible = on; if (on) VOL.field.material.uniforms.kmpp.value = kmpp;
+    on = on && kmpp < 1.3; VOL.grp.visible = on; if (!on) return;
+    if (REDUCED) dt = VOL.on ? 0 : 0.6; VOL.on = true;
+    var ex = state.exag, now = performance.now()/1000, P = VOL.lava.geometry.attributes.position.array, C = VOL.lava.geometry.attributes.color.array, v = VOL.vent;
+    VOL.L.forEach(function(q, i){
+      q.s += q.v*dt*(1.25 - q.s*0.7); if (q.s >= 1) q.s = 0;
+      var path = VOL.paths[q.b], fi = q.s*(path.length - 1), k = Math.floor(fi), f = fi - k, a = path[k], b = path[Math.min(path.length - 1, k + 1)], o = i*3, w = q.j*Math.min(1, q.s*6);
+      P[o] = a[0] + (b[0] - a[0])*f; P[o + 1] = ((a[1] + (b[1] - a[1])*f) + 0.03)*ex; P[o + 2] = a[2] + (b[2] - a[2])*f + w;
+      var hot = 1 - q.s, fl = 0.75 + 0.25*Math.sin(now*5 + i); C[o] = (0.75 + 0.25*hot)*fl; C[o + 1] = (0.1 + 0.62*hot*hot)*fl; C[o + 2] = 0.02 + 0.2*hot*hot*hot;
+    });
+    VOL.lava.geometry.attributes.position.needsUpdate = true; VOL.lava.geometry.attributes.color.needsUpdate = true;
+    P = VOL.fount.geometry.attributes.position.array; C = VOL.fount.geometry.attributes.color.array;
+    VOL.F.forEach(function(q, i){
+      q.life += dt;
+      if (q.life >= q.max || q.y < 0){ q.life = 0; q.max = 0.9 + Math.random()*0.7; q.x = q.z = 0; q.y = 0.02; var an = Math.random()*6.283, sp = Math.random()*0.22; q.vx = Math.cos(an)*sp; q.vz = Math.sin(an)*sp; q.vy = 0.55 + Math.random()*0.5; }
+      q.vy -= 1.5*dt; q.x += q.vx*dt; q.y += q.vy*dt; q.z += q.vz*dt;
+      var o = i*3, h = Math.max(0, 1 - q.life/q.max); P[o] = v[0] + q.x; P[o + 1] = (v[1] + Math.max(0, q.y))*ex; P[o + 2] = v[2] + q.z; C[o] = 1; C[o + 1] = 0.35 + 0.6*h; C[o + 2] = 0.08 + 0.3*h*h;
+    });
+    VOL.fount.geometry.attributes.position.needsUpdate = true; VOL.fount.geometry.attributes.color.needsUpdate = true;
+    VOL.smoke.forEach(function(q){
+      q.age += dt; if (q.age > 8) q.age -= 8;
+      var a = q.age, sz = 0.5 + a*0.5; q.sp.position.set(v[0] - a*0.22, (v[1] + 0.25 + a*0.42)*ex, v[2] + a*0.16); q.sp.scale.set(sz*1.3, sz*ex*0.42, 1); q.sp.material.opacity = 0.55*Math.min(1, a*1.5)*(1 - a/8);
+    });
+    var gs = 0.9 + 0.18*Math.sin(now*7); VOL.glow.position.set(v[0], (v[1] + 0.06)*ex, v[2]); VOL.glow.scale.set(gs, gs*ex*0.3, 1);
+  }
+
+  // ================================================================ SFIDA: trova sulla carta
+  var QZ = { on:false, cat:null, teams:1, list:[], i:0, tries:0, score:[0, 0], miss:[], busy:false, pin:null, pins:[], timer:null, prevNames:true };
+  function inRing(r, lon, lat){ var c = false; for (var i=0, j=r.length - 2; i<r.length; j=i, i+=2){ if ((r[i + 1] > lat) !== (r[j + 1] > lat) && lon < (r[j] - r[i])*(lat - r[i + 1])/(r[j + 1] - r[i + 1]) + r[i]) c = !c; } return c; }
+  function regAt(lon, lat){
+    for (var k=0;k<POL.regs.length;k++){ var g = POL.regs[k]; if (lon < g.b[0] || lon > g.b[2] || lat < g.b[1] || lat > g.b[3]) continue;
+      for (var p=0;p<g.p.length;p++){ var ins = false; g.p[p].forEach(function(r){ if (inRing(r, lon, lat)) ins = !ins; }); if (ins) return g; } }
+    return null;
+  }
+  var ARTIC = { 'La Rioja':'La Rioja', 'Castiglia-La Mancia':'la Castiglia-La Mancia', 'Castiglia e León':'la Castiglia e León', 'Galizia':'la Galizia', 'Estremadura':'l’Estremadura', 'Murcia':'la Murcia', 'Asturie':'le Asturie',
+    'Cantabria':'la Cantabria', 'Comunità Valenciana':'la Comunità Valenciana', 'Isole Baleari':'le Isole Baleari', 'Catalogna':'la Catalogna', 'Paesi Baschi':'i Paesi Baschi', 'Navarra':'la Navarra', 'Aragona':'l’Aragona',
+    'Madrid':'la Comunità di Madrid', 'Andalusia':'l’Andalusia', 'Isole Canarie':'le Isole Canarie', 'Ceuta':'Ceuta', 'Melilla':'Melilla' };
+  function quizItems(cat){
+    if (cat === 'com') return POL.regs.filter(function(g){ return g.n !== 'Ceuta' && g.n !== 'Melilla'; }).map(function(g){
+      return { n:g.n, q:'Dove si trova', a:ARTIC[g.n] || g.n, t:'reg', g:g, c:g.n === 'Isole Canarie' ? [-15.7, 28.3] : (g.n === 'Isole Baleari' ? [2.9, 39.6] : g.l), box:g.n === 'Isole Canarie' || g.n === 'Isole Baleari' ? g.b : null }; });
+    if (cat === 'cit') return [['Madrid', -3.7038, 40.4168], ['Barcellona', 2.1762, 41.3843], ['Valencia', -0.3763, 39.4699], ['Siviglia', -5.9845, 37.3891], ['Saragozza', -0.8891, 41.6488], ['Malaga', -4.4214, 36.7213],
+      ['Bilbao', -2.935, 43.263], ['Santiago de Compostela', -8.5442, 42.8802], ['Granada', -3.5986, 37.1773], ['Toledo', -4.0273, 39.8628], ['Valladolid', -4.7245, 41.6523], ['Oviedo', -5.8448, 43.3614],
+      ['Santander', -3.8044, 43.4623], ['Pamplona', -1.6432, 42.8125], ['Murcia', -1.1307, 37.9922], ['Palma di Maiorca', 2.6502, 39.5696], ['Cordova', -4.7794, 37.8882], ['Cadice', -6.2926, 36.5271],
+      ['Salamanca', -5.6635, 40.9701], ['Alicante', -0.4907, 38.3452], ['La Coruña', -8.4115, 43.3623], ['San Sebastián', -1.9812, 43.3183]
+    ].map(function(c){ return { n:c[0], q:'Dov’è', a:c[0], t:'pt', c:[c[1], c[2]], r:45 }; });
+    var F = [
+      { n:'i Pirenei', t:'ln', p:[[-1.6, 43.05], [0.0, 42.7], [1.5, 42.55], [2.9, 42.4]], r:45 },
+      { n:'la Cordigliera Cantabrica', t:'ln', p:[[-7.0, 42.95], [-5.0, 43.1], [-3.6, 43.05]], r:45 },
+      { n:'il Sistema Centrale', t:'ln', p:[[-6.6, 40.3], [-5.2, 40.3], [-3.9, 40.85], [-3.2, 41.15]], r:40 },
+      { n:'il Sistema Iberico', t:'ln', p:[[-3.3, 42.2], [-2.3, 41.6], [-1.6, 40.6], [-1.0, 40.2]], r:50 },
+      { n:'la Sierra Morena', t:'ln', p:[[-6.8, 37.95], [-5.0, 38.2], [-3.2, 38.45]], r:40 },
+      { n:'la Sierra Nevada', t:'pt', c:[-3.2, 37.06], r:40 },
+      { n:'il Mulhacén', t:'pt', c:[-3.3115, 37.0533], r:35 },
+      { n:'l’Aneto', t:'pt', c:[0.6567, 42.6311], r:35 },
+      { n:'la Meseta', t:'box', b:[-6.0, 39.0, -2.4, 42.0], c:[-4.2, 40.6] },
+      { n:'la valle dell’Ebro', t:'ln', p:[[-2.0, 42.3], [-0.9, 41.65], [0.3, 41.2]], r:35 },
+      { n:'il fiume Tago', t:'riv', k:'tago', r:22 }, { n:'il fiume Duero', t:'riv', k:'duero', r:22 }, { n:'il fiume Ebro', t:'riv', k:'ebro', r:22 }, { n:'il fiume Guadalquivir', t:'riv', k:'guadalquivir', r:22 },
+      { n:'il delta dell’Ebro', t:'pt', c:[0.8, 40.7], r:30 },
+      { n:'il Mar Cantabrico', t:'box', b:[-9.3, 43.4, -1.6, 45.6], sea:1, c:[-5.0, 44.3] },
+      { n:'il Mar Mediterraneo', t:'box', b:[-2.0, 35.6, 5.5, 42.4], sea:1, c:[1.5, 38.3] },
+      { n:'lo Stretto di Gibilterra', t:'pt', c:[-5.6, 35.95], r:40 },
+      { n:'l’Oceano Atlantico', t:'box', b:[-20, 34.5, -6.2, 45.5], sea:1, c:[-10.5, 40.5] },
+      { n:'le Isole Baleari', t:'box', b:[1.1, 38.5, 4.4, 40.2], c:[2.9, 39.6] }
+    ];
+    return F.map(function(f){ f.q = 'Trova'; f.a = f.n; if (f.t === 'riv'){ f.p = RIVPTS[f.k][0]; var m = f.p[Math.floor(f.p.length/2)]; f.c = m; } else if (f.t === 'ln') f.c = f.p[Math.floor(f.p.length/2)]; return f; });
+  }
+  function lineDist(p, gp){
+    var px = X(gp[0]), pz = Z(gp[1]), bd = 1e9;
+    for (var i=0;i<p.length - 1;i++){ var ax = X(p[i][0]), az = Z(p[i][1]), bx = X(p[i + 1][0]), bz = Z(p[i + 1][1]), dx = bx - ax, dz = bz - az, l2 = dx*dx + dz*dz || 1, t = Math.max(0, Math.min(1, ((px - ax)*dx + (pz - az)*dz)/l2));
+      bd = Math.min(bd, Math.hypot(px - ax - t*dx, pz - az - t*dz)); }
+    return bd;
+  }
+  // distanza (km) dal bersaglio: 0 = centro
+  function quizDist(it, gp){
+    if (it.t === 'reg'){ if (it.box && gp[0] >= it.box[0] && gp[0] <= it.box[2] && gp[1] >= it.box[1] && gp[1] <= it.box[3]) return 0; var g = regAt(gp[0], gp[1]); return g === it.g ? 0 : Math.max(1, distKm(it.c, gp)); }
+    if (it.t === 'box'){ var ins = gp[0] >= it.b[0] && gp[0] <= it.b[2] && gp[1] >= it.b[1] && gp[1] <= it.b[3]; if (ins && it.sea && heightAny(gp[0], gp[1]) > 0) ins = false; return ins ? 0 : Math.max(1, distKm(it.c, gp)); }
+    var tol = Math.max(it.r, 16*curKmpp()), d = it.t === 'pt' ? distKm(it.c, gp) : lineDist(it.p, gp);
+    return d <= tol ? 0 : d;
+  }
+  var TEAMS = [['Squadra A', '#1f6fb2'], ['Squadra B', '#c8372d']];
+  function quizOpen(){
+    gid('quizbar').hidden = false; gid('qSetup').hidden = false; gid('qPlay').hidden = true; gid('qEnd').hidden = true;
+    gid('quizBtn').setAttribute('aria-pressed', 'true'); markLayout();
+  }
+  function quizStart(cat){
+    QZ.on = true; QZ.cat = cat; QZ.i = 0; QZ.score = [0, 0]; QZ.miss = []; QZ.busy = false;
+    var all = quizItems(cat); for (var i=all.length - 1;i>0;i--){ var j = Math.floor(Math.random()*(i + 1)), t = all[i]; all[i] = all[j]; all[j] = t; }
+    QZ.list = all.slice(0, 10);
+    if (HIST.playing) stopHist();
+    setMode(cat === 'com' ? 'politica' : 'tutto');
+    closeInfo(); dockView();
+    appEl.classList.add('picking');
+    gid('qSetup').hidden = true; gid('qEnd').hidden = true; gid('qPlay').hidden = false;
+    quizAsk();
+  }
+  function quizClearPins(){ QZ.pins.forEach(removePin); QZ.pins = []; }
+  function quizAsk(){
+    quizClearPins(); QZ.tries = 0; QZ.busy = false;
+    var it = QZ.list[QZ.i], team = QZ.teams === 2 ? QZ.i % 2 : 0;
+    gid('qNum').textContent = 'Domanda ' + (QZ.i + 1) + ' di ' + QZ.list.length;
+    var tu = gid('qTurn'); tu.textContent = '';
+    if (QZ.teams === 2){ var b = document.createElement('b'); b.textContent = 'Tocca alla ' + TEAMS[team][0]; b.style.background = TEAMS[team][1]; tu.appendChild(b); }
+    gid('qScore').textContent = QZ.teams === 2 ? 'A ' + QZ.score[0] + ' – B ' + QZ.score[1] : 'Punti: ' + QZ.score[0];
+    var qt = gid('qText'); qt.textContent = ''; var sm = document.createElement('small'); sm.textContent = 'Clicca sulla carta'; qt.appendChild(sm);
+    qt.appendChild(document.createTextNode(it.q + ' ' + it.a + '?'));
+    var fb = gid('qFb'); fb.textContent = it.n === 'Isole Canarie' ? 'Suggerimento: usa la vista «Canarie», in basso.' : ''; fb.className = '';
+    gid('qSkip').hidden = false;
+    if (want.target.x < X(-11) && it.n !== 'Isole Canarie') dockView();
+    labelsDirty = true; markLayout();
+  }
+  function quizReveal(ok, pts){
+    var it = QZ.list[QZ.i], team = QZ.teams === 2 ? QZ.i % 2 : 0;
+    QZ.busy = true; QZ.score[team] += pts; if (!ok) QZ.miss.push(it.a);
+    QZ.pins.push(addPin(ok ? 'ok' : 'no', it.c[0], it.c[1], it.a.charAt(0).toUpperCase() + it.a.slice(1)));
+    gid('qSkip').hidden = true;
+    gid('qScore').textContent = QZ.teams === 2 ? 'A ' + QZ.score[0] + ' – B ' + QZ.score[1] : 'Punti: ' + QZ.score[0];
+    var far = Math.hypot(want.target.x - X(it.c[0]), want.target.z - Z(it.c[1])) > want.dist*0.35;
+    if (!ok || far){ goal = { target:new THREE.Vector3(X(it.c[0]), 0, Z(it.c[1])), theta:want.theta, phi:want.phi, dist:Math.min(want.dist, 1500) }; }
+    clearTimeout(QZ.timer);
+    QZ.timer = setTimeout(function(){ if (!QZ.on) return; QZ.i++; if (QZ.i >= QZ.list.length) quizEnd(); else quizAsk(); }, ok ? 1900 : 3200);
+  }
+  function quizClick(gp){
+    if (!QZ.on || QZ.busy) return;
+    var it = QZ.list[QZ.i], d = quizDist(it, gp), fb = gid('qFb');
+    if (d === 0){ var pts = QZ.tries === 0 ? 10 : 5; fb.className = 'ok'; fb.textContent = (QZ.tries === 0 ? 'Esatto! ' : 'Giusto al secondo colpo! ') + '+' + pts + ' punti'; quizReveal(true, pts); return; }
+    QZ.tries++; QZ.pins.push(addPin('miss', gp[0], gp[1]));
+    var where = '';
+    if (it.t === 'reg'){ var g = regAt(gp[0], gp[1]); where = g ? 'Lì c’è ' + (ARTIC[g.n] || g.n) + '. ' : ''; }
+    else where = 'Sei a circa ' + fmtIt(Math.max(10, Math.round(d/10)*10)) + ' km. ';
+    fb.className = 'no';
+    if (QZ.tries >= 2){ fb.textContent = where + 'Ecco dov’è.'; quizReveal(false, 0); }
+    else fb.textContent = 'Non proprio. ' + where + 'Hai ancora un tentativo.';
+  }
+  function quizEnd(){
+    quizClearPins(); QZ.busy = true;
+    gid('qPlay').hidden = true; gid('qEnd').hidden = false;
+    var max = QZ.list.length*10;
+    if (QZ.teams === 2){
+      var a = QZ.score[0], b = QZ.score[1];
+      gid('qEndTitle').textContent = a === b ? 'Pareggio!' : 'Vince la ' + TEAMS[a > b ? 0 : 1][0] + '!';
+      gid('qEndText').textContent = 'Squadra A ' + a + ' punti – Squadra B ' + b + ' punti (su ' + (max/2) + ' ciascuna).';
+    } else {
+      var s = QZ.score[0];
+      gid('qEndTitle').textContent = s + ' punti su ' + max;
+      gid('qEndText').textContent = s >= 90 ? 'Bravissimo: conosci la Spagna come un geografo!' : s >= 70 ? 'Molto bene: ancora un giro e sarà perfetto.' : s >= 40 ? 'Buon inizio: riguarda la carta con i nomi e riprova.' : 'Niente paura: esplora la carta con i nomi accesi e poi riprova.';
+    }
+    gid('qEndMiss').textContent = QZ.miss.length ? 'Da ripassare: ' + QZ.miss.join(', ') + '.' : 'Nessun errore!';
+    markLayout();
+  }
+  function quizQuit(){
+    clearTimeout(QZ.timer); quizClearPins(); QZ.on = false; QZ.busy = false;
+    gid('quizbar').hidden = true; gid('quizBtn').setAttribute('aria-pressed', 'false');
+    appEl.classList.remove('picking');
+    updateLegend(); labelsDirty = true; markLayout();
+  }
+  (function(){
+    gid('quizBtn').addEventListener('click', function(){ if (gid('quizbar').hidden) quizOpen(); else quizQuit(); });
+    gid('qClose').addEventListener('click', quizQuit); gid('qQuit').addEventListener('click', quizQuit);
+    gid('qAgain').addEventListener('click', function(){ quizStart(QZ.cat); });
+    gid('qSkip').addEventListener('click', function(){ if (QZ.busy) return; gid('qFb').className = 'no'; gid('qFb').textContent = 'Ecco dov’è.'; quizReveal(false, 0); });
+    document.querySelectorAll('[data-qcat]').forEach(function(b){ b.addEventListener('click', function(){ quizStart(b.getAttribute('data-qcat')); }); });
+    document.querySelectorAll('[data-qteam]').forEach(function(b){ b.addEventListener('click', function(){ QZ.teams = +b.getAttribute('data-qteam');
+      document.querySelectorAll('[data-qteam]').forEach(function(o){ o.setAttribute('aria-pressed', o === b ? 'true' : 'false'); }); }); });
+  })();
+  function dockView(){ var v = VIEWS.spagna, mob = canvas.clientWidth <= 860; goal = viewGoal({ lon:v.lon, lat:mob ? 36.3 : 37.9, theta:0, phi:v.phi, dist:v.dist*(mob ? 1.2 : 1.18) }); stopRotate(); }
+  var exLast = performance.now(), dockEl = gid('dock');
+  function updateExtras(kmpp){
+    var now = performance.now(), dt = Math.min(0.1, (now - exLast)/1000); exLast = now;
+    if (HIST.playing && state.mode === 'storia') tickHist(dt);
+    if (state.mode === 'stagioni') tickSeason(REDUCED ? 0 : dt, kmpp);
+    tickVolcano(dt, kmpp);
+  }
+
   // ---------------------------------------------------------------- UI
   var viewBtns = document.querySelectorAll('[data-view]');
   viewBtns.forEach(function(b){ b.addEventListener('click', function(){
@@ -2200,27 +2933,27 @@
   }); });
   // "Mostra": everything, only the relief, only the rivers, only the lakes, Spain by night, climate, coasts
   var appEl = document.getElementById('app'), rootEl = document.documentElement, savedTheme = null;
-  var MAPTXT = { fisica:['Carta fisica in 3D', 'Spagna fisica', 'Carta fisica'], politica:['Carta politica in 3D', 'Spagna politica', 'Carta politica'],
+  var MAPTXT = { storia:['Carta storica in 3D', 'La Reconquista', 'Reconquista'], fisica:['Carta fisica in 3D', 'Spagna fisica', 'Carta fisica'], politica:['Carta politica in 3D', 'Spagna politica', 'Carta politica'],
     lingue:['Carta delle lingue in 3D', 'Lingue e dialetti', 'Lingue'], cammini:['Itinerari dei pellegrini', 'Cammini di Santiago', 'Cammini'] };
   function setMode(m){
     var was = state.mode; state.mode = m;
-    var solo = m === 'fiumi' || m === 'laghi', night = m === 'notte', clima = m === 'clima', coste = m === 'coste', pol = m === 'politica', lng = m === 'lingue', cmm = m === 'cammini';
-    if (!pol && !lng && !night) state.lastPhys = m;
+    var solo = m === 'fiumi' || m === 'laghi', night = m === 'notte', clima = m === 'clima', coste = m === 'coste', pol = m === 'politica', lng = m === 'lingue', cmm = m === 'cammini', sto = m === 'storia', stg = m === 'stagioni';
+    if (!pol && !lng && !night && !sto) state.lastPhys = m;
     var UW = world.material.userData.U;
-    var ds = solo ? 0.9 : (clima || coste || pol || lng ? 0.6 : (cmm ? 0.85 : 0));
+    var ds = solo ? 0.9 : (clima || coste || pol || lng || sto ? 0.6 : (cmm ? 0.85 : 0));
     setU('useB', m === 'rilievi' ? 1 : 0);
     setU('desat', ds); UW.desat.value = ds;
-    eachU(function(U, b){ U.polMap.value = lng ? (b.langTex || b.polTex) : b.polTex; });
-    setU('polMix', pol || lng ? 1 : 0); setU('bordPol', pol ? 1 : 0); setU('bordNight', night ? 1 : 0);
+    eachU(function(U, b){ U.polMap.value = stg ? b.seaTex : sto ? b.histTex : (lng ? (b.langTex || b.polTex) : b.polTex); });
+    setU('polMix', pol || lng || sto || stg ? 1 : 0); setU('bordPol', pol ? 1 : 0); setU('bordNight', night ? 1 : 0);
     setU('zoneMix', clima ? 1 : 0);
     coastMesh.visible = coste;
-    setU('keepLakes', solo || pol || lng ? 1 : 0);
+    setU('keepLakes', solo || pol || lng || sto || stg ? 1 : 0);
     setU('lakeBoost', m === 'laghi' || pol ? 0.55 : 0);
     setU('night', night ? 1 : 0); UW.night.value = night ? 1 : 0;
     glitter.visible = night;
     if (fariPts){ fariPts.visible = night; fari.forEach(function(q){ q.visible = night; }); }
     if (pil) pil.visible = camOn();
-    riverMesh.visible = m === 'tutto' || m === 'fiumi' || pol || cmm;
+    riverMesh.visible = m === 'tutto' || m === 'fiumi' || pol || cmm || sto || stg;
     regionMesh.visible = pol; provMesh.visible = pol && state.prov; intlMesh.visible = pol;
     nightBorders.forEach(function(q){ q.visible = false; }); selMeshes.forEach(function(q){ q.visible = pol; }); setU('selMix', pol && polSel ? 1 : 0);
     riverMesh.material.uniforms.boost.value = m === 'fiumi' ? 1.5 : (cmm ? 0.7 : 1);
@@ -2230,14 +2963,17 @@
     var wasMap = was === 'politica' || was === 'lingue' ? was : 'fisica', nowMap = pol || lng ? m : 'fisica';
     if (wasMap !== nowMap) curRiver = null;
     showRiver(curRiver);
-    var mk = pol || night ? 'politica' : lng ? 'lingue' : 'fisica';
-    document.getElementById('grpMostra').hidden = pol || lng || night;
+    var mk = pol || night ? 'politica' : lng ? 'lingue' : sto ? 'storia' : 'fisica';
+    document.getElementById('grpMostra').hidden = pol || lng || night || sto;
+    document.getElementById('timebar').hidden = !sto; if (!sto && HIST.playing) stopHist(); if (sto) setYear(HIST.yf, HIST.playing); if (sto && was !== 'storia' && was) dockView();
+    seasonShow(stg); if (stg && was !== 'stagioni' && was) dockView();
     document.getElementById('grpPol').hidden = !(pol || night);
     document.getElementById('provBtn').hidden = !pol;
     document.getElementById('hEyebrow').textContent = MAPTXT[mk][0];
     document.getElementById('hTitle').textContent = MAPTXT[mk][1];
     document.getElementById('re-head').textContent = MAPTXT[mk][2];
     if (cmm){ document.getElementById('hEyebrow').textContent = 'Carta fisica in 3D'; document.getElementById('hTitle').textContent = 'Cammini di Santiago'; document.getElementById('re-head').textContent = 'Cammini'; }
+    if (stg){ document.getElementById('hEyebrow').textContent = 'Carta fisica in 3D'; document.getElementById('hTitle').textContent = 'Stagioni e clima'; document.getElementById('re-head').textContent = 'Stagioni'; }
     if (night){ document.getElementById('hEyebrow').textContent = 'Carta politica · di notte'; document.getElementById('hTitle').textContent = 'Spagna di notte'; document.getElementById('re-head').textContent = 'Di notte'; }
     if (!lng) setLangHi(0);
     document.querySelectorAll('[data-map]').forEach(function(o){ o.setAttribute('aria-pressed', o.getAttribute('data-map') === mk ? 'true' : 'false'); });
@@ -2253,7 +2989,8 @@
     layoutDirty = true; labelsDirty = true;
     var m = state.mode;
     var hide = { legDay: !(m === 'tutto' || m === 'rilievi') || camOn(), legPol: m !== 'politica', legClima: m !== 'clima', legCoste: m !== 'coste', legNight: m !== 'notte',
-      legLaghi: m !== 'laghi', legFiumi: m !== 'fiumi', legLang: m !== 'lingue', legCam: !camOn() };
+      legLaghi: m !== 'laghi', legFiumi: m !== 'fiumi', legLang: m !== 'lingue', legCam: !camOn(), legStoria: m !== 'storia', legStag: m !== 'stagioni' };
+    if (QZ.on) for (var hk in hide) hide[hk] = true;
     for (var id in hide) document.getElementById(id).hidden = hide[id];
     var any = [].some.call(document.querySelectorAll('#legend > [data-part]'), function(e){ return !e.hidden; });
     var shut = typeof closed !== 'undefined' && closed.legend;
@@ -2463,16 +3200,16 @@
     if (coastMesh) coastMesh.material.uniforms.kmpp.value = kmpp;
     Object.keys(rivHL).forEach(function(q){ rivHL[q].forEach(function(m){ m.material.uniforms.kmpp.value = kmpp; }); });
     if (camMeshes.length) updateCamWidth(kmpp);
-    updateAnim(kmpp);
+    updateAnim(kmpp); updateExtras(kmpp);
     if (glitter && glitter.visible){ glitter.material.uniforms.time.value = REDUCED ? 12.0 : performance.now()/1000; glitter.material.uniforms.dpr.value = renderer.getPixelRatio(); }
     if (layoutDirty || frameN % 90 === 0){
       layoutDirty = false;
       var stack = barEl.offsetHeight + 26;
-      legendEl.style.bottom = stack + 'px'; reLegend.style.bottom = legendEl.style.bottom;
+      legendEl.style.bottom = stack + 'px'; reLegend.style.bottom = legendEl.style.bottom; dockEl.style.bottom = (stack + (canvas.clientWidth <= 860 && !reLegend.hidden ? reLegend.offsetHeight + 8 : 0)) + 'px';
       layoutTop(stack);
       panelRects = null;
     }
-    updateHover(); renderer.render(scene, camera); updateLabels();
+    updateHover(); renderer.render(scene, camera); updateLabels(); updatePins();
   }
   var mapsEl = document.getElementById('maps'), headEl = document.getElementById('head'), reHeadEl = document.getElementById('re-head'), reCardEl = document.getElementById('re-card');
   // the map choice sits in the top-left corner; title (and, on a phone, the Spain card) go just below it
@@ -2533,7 +3270,7 @@
       var dd = pixels(ims[LB + 2 + k]); b.LID = new Uint8Array(b.NX*b.NY);
       for (var q=0;q<b.NX*b.NY;q++) b.LID[q] = dd[q*4];
     });
-    buildWorld(texture(ims[1]), texture(ims[2])); buildRivers(); buildRegions(); buildGlitter(); buildCoast(); buildRivHL(); buildCammini(); buildCritters(); buildPilgrims(); buildFari();
+    buildWorld(texture(ims[1]), texture(ims[2])); buildRivers(); buildRegions(); buildGlitter(); buildCoast(); buildRivHL(); buildCammini(); buildCritters(); buildPilgrims(); buildFari(); buildHist(); buildSeason(); buildVolcano();
     setExag(state.exag); makeLabels(); setMode('tutto');
     setCam(viewGoal(VIEWS.spagna)); resize(); updateCamera(0);
     (function warmUp(){
@@ -2552,7 +3289,7 @@
     document.getElementById('loading').hidden = true;
     requestAnimationFrame(loop);
     window.__ES__ = { renderer:renderer, scene:scene, camera:camera, cam:cam, setCam:setCam, viewGoal:viewGoal, VIEWS:VIEWS, render:render,
-      updateCamera:updateCamera, setExag:setExag, setMode:setMode, L:L, state:state, X:X, Z:Z, regionMesh:regionMesh, riverMesh:riverMesh, glitter:glitter, BLK:BLK, openInfo:openInfo, pickGround:pickGround, birds:birds, flocks:flocks, langAt:langAt, setModeX:setMode, closeInfo:closeInfo, jump:function(v){ goal = null; setCam(viewGoal(typeof v === 'string' ? VIEWS[v] : v)); updateCamera(0); }, THREE:THREE };
+      updateCamera:updateCamera, setExag:setExag, setMode:setMode, L:L, state:state, X:X, Z:Z, regionMesh:regionMesh, riverMesh:riverMesh, glitter:glitter, BLK:BLK, openInfo:openInfo, pickGround:pickGround, HIST:HIST, setYear:setYear, SEA:SEA, setMonth:setMonth, VOL:VOL, QZ:QZ, quizStart:quizStart, quizClick:quizClick, quizOpen:quizOpen, PINS:PINS, birds:birds, flocks:flocks, langAt:langAt, setModeX:setMode, closeInfo:closeInfo, jump:function(v){ goal = null; setCam(viewGoal(typeof v === 'string' ? VIEWS[v] : v)); updateCamera(0); }, THREE:THREE };
   }
 })();
 </script>
